@@ -85,15 +85,44 @@ export interface Database {
           id: string;
           name: string;
           email: string;
+          phone: string | null;
           company: string | null;
           message: string;
           budget: string | null;
           service: string | null;
-          status: "new" | "read" | "replied";
+          status: "new" | "read" | "replied" | "contacted" | "meeting_scheduled" | "proposal_sent" | "negotiation" | "won" | "lost";
+          notes: string | null;
+          history: Json | null;
           created_at: string;
         };
-        Insert: Omit<Database["public"]["Tables"]["contacts"]["Row"], "id" | "created_at" | "status">;
-        Update: Partial<Database["public"]["Tables"]["contacts"]["Row"]>;
+        Insert: {
+          id?: string;
+          name: string;
+          email: string;
+          phone?: string | null;
+          company?: string | null;
+          message: string;
+          budget?: string | null;
+          service?: string | null;
+          status?: "new" | "read" | "replied" | "contacted" | "meeting_scheduled" | "proposal_sent" | "negotiation" | "won" | "lost";
+          notes?: string | null;
+          history?: Json | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          name?: string;
+          email?: string;
+          phone?: string | null;
+          company?: string | null;
+          message?: string;
+          budget?: string | null;
+          service?: string | null;
+          status?: "new" | "read" | "replied" | "contacted" | "meeting_scheduled" | "proposal_sent" | "negotiation" | "won" | "lost";
+          notes?: string | null;
+          history?: Json | null;
+          created_at?: string;
+        };
       };
       newsletter: {
         Row: {

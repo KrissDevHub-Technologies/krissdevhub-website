@@ -100,11 +100,14 @@ CREATE TABLE IF NOT EXISTS contacts (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   name TEXT NOT NULL,
   email TEXT NOT NULL,
+  phone TEXT,
   company TEXT,
   message TEXT NOT NULL,
   budget TEXT,
   service TEXT,
-  status TEXT NOT NULL DEFAULT 'new' CHECK (status IN ('new', 'read', 'replied')),
+  status TEXT NOT NULL DEFAULT 'new' CHECK (status IN ('new', 'read', 'replied', 'contacted', 'meeting_scheduled', 'proposal_sent', 'negotiation', 'won', 'lost')),
+  notes TEXT DEFAULT '',
+  history JSONB DEFAULT '[]'::jsonb,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
