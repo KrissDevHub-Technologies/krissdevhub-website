@@ -58,11 +58,14 @@ export default function ContactPage() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
         });
-        if (!response.ok) throw new Error("Failed to send message");
+        if (!response.ok) {
+          const resBody = await response.json().catch(() => ({}));
+          throw new Error(resBody.error || "Failed to send message");
+        }
         setIsSuccess(true);
         reset();
-      } catch {
-        setServerError("Something went wrong. Please email us directly at hello@krissdevhub.com");
+      } catch (err: any) {
+        setServerError(err.message || "Something went wrong. Please email us directly at hello@krissdevhub.com");
       }
     });
   };
