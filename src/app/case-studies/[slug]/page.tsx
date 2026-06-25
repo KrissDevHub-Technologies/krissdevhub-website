@@ -49,6 +49,27 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         border: "hover:border-rose-500/20",
         glow: "bg-rose-500/5",
       }
+    : slug.includes("krissdevhub-technologies-website")
+    ? {
+        gradient: "from-cyan-600/15 via-blue-600/10 to-transparent",
+        accent: "text-cyan-400",
+        border: "hover:border-cyan-500/20",
+        glow: "bg-cyan-500/5",
+      }
+    : slug.includes("signal-hire-ai-interview-platform")
+    ? {
+        gradient: "from-emerald-600/15 via-teal-600/10 to-transparent",
+        accent: "text-emerald-400",
+        border: "hover:border-emerald-500/20",
+        glow: "bg-emerald-500/5",
+      }
+    : slug.includes("branovation-marketing-saas-admin")
+    ? {
+        gradient: "from-amber-600/15 via-orange-600/10 to-transparent",
+        accent: "text-amber-400",
+        border: "hover:border-amber-500/20",
+        glow: "bg-amber-500/5",
+      }
     : {
         gradient: "from-zinc-800/35 via-zinc-900/20 to-transparent",
         accent: "text-white",
