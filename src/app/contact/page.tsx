@@ -197,9 +197,9 @@ export default function ContactPage() {
                           className={`${inputBase} bg-[#121212]`}
                           {...register("service")}
                         >
-                          <option value="">Select a service</option>
+                          <option value="" className="bg-[#121212] text-white">Select a service</option>
                           {services.map((s) => (
-                            <option key={s} value={s}>{s}</option>
+                            <option key={s} value={s} className="bg-[#121212] text-white">{s}</option>
                           ))}
                         </select>
                       </div>
@@ -210,9 +210,9 @@ export default function ContactPage() {
                           className={`${inputBase} bg-[#121212]`}
                           {...register("budget")}
                         >
-                          <option value="">Select range</option>
+                          <option value="" className="bg-[#121212] text-white">Select range</option>
                           {budgets.map((b) => (
-                            <option key={b} value={b}>{b}</option>
+                            <option key={b} value={b} className="bg-[#121212] text-white">{b}</option>
                           ))}
                         </select>
                       </div>
