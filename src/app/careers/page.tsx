@@ -80,6 +80,59 @@ export default async function CareersPage() {
             })}
           </div>
 
+          {/* Culture Section */}
+          <div className="mb-24">
+            <ScrollReveal>
+              <span className="text-[10px] tracking-[0.15em] uppercase text-white/30 font-medium font-space-grotesk mb-4 block">
+                Culture
+              </span>
+              <h2 className="text-3xl font-bold text-white font-space-grotesk mb-10">How we work</h2>
+            </ScrollReveal>
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                { title: "Deep Focus Over Meetings", desc: "We protect developer time. We have zero daily stands, no status calls, and run our sprint scoping asynchronously." },
+                { title: "Craft Over Speed", desc: "We prioritize clean structures, strict TypeScript interfaces, and SQL policies. We write code we are proud to transfer." },
+                { title: "Extreme Ownership", desc: "Engineers own their code from strategy to deployment. You work in direct contact with clients and ship features weekly." }
+              ].map((c, i) => (
+                <ScrollReveal key={i} delay={i * 0.08}>
+                  <div className="p-6 rounded-2xl bg-[#121212]/50 border border-white/[0.04] hover:border-white/[0.08] transition-colors">
+                    <h3 className="text-sm font-bold text-white font-space-grotesk mb-2">{c.title}</h3>
+                    <p className="text-xs text-white/45 leading-relaxed font-light">{c.desc}</p>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+
+          {/* Hiring Process */}
+          <div className="mb-24">
+            <ScrollReveal>
+              <span className="text-[10px] tracking-[0.15em] uppercase text-white/30 font-medium font-space-grotesk mb-4 block">
+                Process
+              </span>
+              <h2 className="text-3xl font-bold text-white font-space-grotesk mb-10">Hiring Process</h2>
+            </ScrollReveal>
+            <div className="grid sm:grid-cols-2 md:grid-cols-5 gap-4 relative">
+              {[
+                { step: "01", name: "Form Screening", desc: "We review your GitHub, portfolio, and past project structures." },
+                { step: "02", name: "Intro Chat", desc: "A 15-minute video call to align on goals and role expectations." },
+                { step: "03", name: "Technical sync", desc: "A deep dive into system design patterns you have implemented." },
+                { step: "04", name: "Paid project trial", desc: "A 1-week paid contract sprint building a custom feature." },
+                { step: "05", name: "Final Offer", desc: "IP sign-off and permanent onboarding." }
+              ].map((p, i) => (
+                <ScrollReveal key={i} delay={i * 0.06}>
+                  <div className="p-5 rounded-2xl bg-[#111111] border border-white/[0.06] flex flex-col justify-between h-full relative">
+                    <span className="text-xl font-bold font-mono text-white/20 mb-3 block">{p.step}</span>
+                    <div>
+                      <h4 className="text-xs font-bold text-white font-space-grotesk mb-1">{p.name}</h4>
+                      <p className="text-[10px] text-white/40 leading-relaxed font-light">{p.desc}</p>
+                    </div>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+
           {/* Open roles */}
           <div className="max-w-3xl">
             <TextReveal

@@ -114,6 +114,44 @@ export interface Database {
         Insert: Omit<Database["public"]["Tables"]["settings"]["Row"], "updated_at">;
         Update: Partial<Database["public"]["Tables"]["settings"]["Row"]>;
       };
+      career_applications: {
+        Row: {
+          id: string;
+          name: string;
+          email: string;
+          github_url: string | null;
+          linkedin_url: string | null;
+          resume_url: string;
+          cover_letter: string;
+          role_slug: string;
+          status: "new" | "reviewing" | "shortlisted" | "rejected";
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          name: string;
+          email: string;
+          github_url?: string | null;
+          linkedin_url?: string | null;
+          resume_url: string;
+          cover_letter: string;
+          role_slug: string;
+          status?: "new" | "reviewing" | "shortlisted" | "rejected";
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          name?: string;
+          email?: string;
+          github_url?: string | null;
+          linkedin_url?: string | null;
+          resume_url?: string;
+          cover_letter?: string;
+          role_slug?: string;
+          status?: "new" | "reviewing" | "shortlisted" | "rejected";
+          created_at?: string;
+        };
+      };
     };
   };
 }

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, Brain, Zap, Code2, GitBranch, Layers, Bot } from "lucide-react";
+import { ArrowUpRight, Brain, Zap, Code2, GitBranch, Layers, Sparkles } from "lucide-react";
 import { ScrollReveal } from "@/components/shared/scroll-reveal";
 import { TextReveal } from "@/components/shared/text-reveal";
 import { CtaSection } from "@/features/home/cta-section";
@@ -8,58 +8,58 @@ import { constructMetadata } from "@/lib/metadata";
 export const metadata = constructMetadata({
   title: "Services",
   description:
-    "AI development, SaaS engineering, custom software, API integrations, and automation. End-to-end software services for startups and SMBs.",
+    "AI application development, SaaS engineering, workflow automation, custom software, API development, and MVP launch services.",
   canonical: "https://krissdevhub.com/services",
 });
 
 const services = [
   {
     icon: Brain,
-    title: "AI Development",
+    title: "AI Application Development",
     href: "/services/ai-development",
     description:
-      "From LLM integrations and RAG systems to custom AI agents and vector databases. We build AI that's production-ready and actually solves your problem.",
-    features: ["LLM Integration", "RAG Systems", "AI Agents", "Vector Databases", "Fine-tuning", "Embeddings"],
+      "Production-grade AI agents, Retrieval-Augmented Generation (RAG) systems, and custom LLM integrations that solve business problems with strict validation schemas.",
+    features: ["LLM Integrations", "RAG Systems", "AI Agents", "Vector Databases", "Prompt Engineering"],
   },
   {
     icon: Layers,
     title: "SaaS Development",
     href: "/services/saas-development",
     description:
-      "Full-stack SaaS platforms built for scale. Multi-tenancy, usage-based billing, team management, and analytics — everything your product needs from day one.",
-    features: ["Multi-tenancy", "Stripe Billing", "Auth & Teams", "Analytics", "Admin Panel", "API"],
+      "Full-stack SaaS products built for scale. Multi-tenancy, Stripe billing, organization workspaces, and Postgres Row Level Security (RLS) policies from day one.",
+    features: ["Multi-tenancy", "Stripe Billing", "Auth & Invites", "Team Workspaces", "Admin Dashboards"],
+  },
+  {
+    icon: Zap,
+    title: "Workflow Automation",
+    href: "/services/workflow-automation",
+    description:
+      "Eliminate manual data entries and sync tools securely. We build custom background worker queues, cron schedulers, and Slack/Discord alerts.",
+    features: ["Worker Queues", "Custom Webhooks", "Cron Schedulers", "Error Alerting", "System Syncs"],
   },
   {
     icon: Code2,
     title: "Custom Software",
     href: "/services/custom-software",
     description:
-      "Complex business logic that off-the-shelf can't handle. We design and engineer bespoke systems that fit exactly how your business operates.",
-    features: ["Business Logic", "Complex Workflows", "Data Pipelines", "Integrations", "Legacy Modernization"],
+      "Tailored software applications modeled specifically around your organization's unique logic, database structures, and daily work operations.",
+    features: ["Domain Modeling", "PostgreSQL", "Clean TypeScript", "Modern UI", "Full IP Transfer"],
   },
   {
     icon: GitBranch,
-    title: "API Integrations",
-    href: "/services/api-integrations",
+    title: "API Development",
+    href: "/services/api-development",
     description:
-      "Connect any systems, at any scale. REST, GraphQL, and real-time integrations with third-party services, payment providers, and data platforms.",
-    features: ["REST & GraphQL", "Webhooks", "OAuth Flows", "Data Sync", "Rate Limiting", "Documentation"],
+      "Secure, high-throughput REST and GraphQL APIs with token auth, rate limiting, Redis caching, and automated Swagger/OpenAPI documentation.",
+    features: ["REST & GraphQL", "Redis Caching", "JWT / Key Auth", "Rate Limiting", "OpenAPI Docs"],
   },
   {
-    icon: Zap,
-    title: "Automation",
-    href: "/services/automation",
+    icon: Sparkles,
+    title: "MVP Development",
+    href: "/services/mvp-development",
     description:
-      "Replace manual processes with intelligent workflows. We automate the repetitive so your team focuses on what moves the business forward.",
-    features: ["Workflow Design", "Scheduled Jobs", "Event Triggers", "Data Processing", "Notifications"],
-  },
-  {
-    icon: Bot,
-    title: "AI Agents",
-    href: "/services/ai-development",
-    description:
-      "Autonomous AI agents that reason, plan, and act. From customer service bots to internal knowledge workers — agents that actually get things done.",
-    features: ["Tool Use", "Memory", "Multi-agent", "Function Calling", "Monitoring"],
+      "Launch your product Hook in 4-8 weeks with a high-craft, VC-ready prototype codebase built to validate demand and attract capital.",
+    features: ["Lean Scoping", "Rapid Sprints", "Auth & Billing", "Analytics Integrations", "Expandable Code"],
   },
 ];
 

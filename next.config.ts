@@ -30,6 +30,20 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: "/services/api-integrations",
+        destination: "/services/api-development",
+        permanent: true,
+      },
+      {
+        source: "/services/automation",
+        destination: "/services/workflow-automation",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

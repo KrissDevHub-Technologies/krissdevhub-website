@@ -20,6 +20,11 @@ export interface Project {
   slug: string;
   cover_image?: string;
   metric: string;
+  architecture_description?: string;
+  architecture_nodes?: { id: string; label: string; x: number; y: number }[];
+  architecture_edges?: { from: string; to: string; label?: string }[];
+  key_features?: { title: string; description: string }[];
+  gallery?: string[];
 }
 
 export const mockProjects: Project[] = [
@@ -42,6 +47,26 @@ export const mockProjects: Project[] = [
     timeline: "8 weeks",
     slug: "neuralops-dashboard",
     metric: "40% reduction in API costs",
+    architecture_description: "A serverless Next.js frontend communicating with a Vercel Edge logging queue, backed by Supabase for user dashboards and Pinecone for real-time vector caching lookup.",
+    architecture_nodes: [
+      { id: "client", label: "Client App", x: 100, y: 150 },
+      { id: "edge", label: "Vercel Edge API", x: 250, y: 150 },
+      { id: "supabase", label: "Supabase DB", x: 400, y: 70 },
+      { id: "pinecone", label: "Pinecone Vector", x: 400, y: 230 },
+      { id: "openai", label: "OpenAI Models", x: 550, y: 150 },
+    ],
+    architecture_edges: [
+      { from: "client", to: "edge", label: "HTTPS / WS" },
+      { from: "edge", to: "pinecone", label: "Semantic Match" },
+      { from: "edge", to: "supabase", label: "Read Config" },
+      { from: "edge", to: "openai", label: "Fetch Completion" },
+    ],
+    key_features: [
+      { title: "Real-time cost tracking", description: "Stream exact API token expenditure metrics directly onto administrative analytics views." },
+      { title: "Semantic query caching", description: "Prevent redundant LLM execution runs by storing past response vectors in local memory buffers." },
+      { title: "Automated regression tests", description: "Validate prompt stability settings by executing simulation runs across test datasets." },
+    ],
+    gallery: ["/globe.svg", "/file.svg", "/window.svg"],
   },
   {
     title: "FleetFlow SaaS",
@@ -62,6 +87,24 @@ export const mockProjects: Project[] = [
     timeline: "12 weeks",
     slug: "fleetflow-saas",
     metric: "3× route optimization",
+    architecture_description: "A React dashboard connecting to a Node.js socket server to ingest live vehicle metrics, sorting logs in a Redis database before storing long-term fleet positions in PostgreSQL.",
+    architecture_nodes: [
+      { id: "client", label: "React Dashboard", x: 100, y: 150 },
+      { id: "sockets", label: "Node.js Sockets", x: 250, y: 150 },
+      { id: "redis", label: "Redis Queue", x: 400, y: 70 },
+      { id: "postgres", label: "PostgreSQL DB", x: 400, y: 230 },
+    ],
+    architecture_edges: [
+      { from: "client", to: "sockets", label: "WebSocket Feed" },
+      { from: "sockets", to: "redis", label: "Cache Coords" },
+      { from: "sockets", to: "postgres", label: "Write History" },
+    ],
+    key_features: [
+      { title: "Live GPS mapping", description: "Low-latency coordinates streams rendering active vehicle locations with sub-second accuracy." },
+      { title: "Predictive maintenance", description: "Machine learning warnings informing operators about component failures before breakdowns occur." },
+      { title: "Automated billing dispatch", description: "Generate invoice notifications and dispatch bills automatically based on driver log triggers." },
+    ],
+    gallery: ["/globe.svg", "/file.svg", "/window.svg"],
   },
   {
     title: "MedScript AI",
@@ -82,6 +125,26 @@ export const mockProjects: Project[] = [
     timeline: "10 weeks",
     slug: "medscript-ai",
     metric: "60% faster documentation",
+    architecture_description: "A secure audio pipeline streaming recorded patient files to a FastAPI processing server, fetching transcripts from specialized Whisper instances, and feeding notes to Claude via LangChain.",
+    architecture_nodes: [
+      { id: "client", label: "Next.js Portal", x: 100, y: 150 },
+      { id: "fastapi", label: "FastAPI Backend", x: 250, y: 150 },
+      { id: "whisper", label: "Whisper Audio", x: 400, y: 70 },
+      { id: "claude", label: "Claude SOAP", x: 400, y: 230 },
+      { id: "azure", label: "Azure Vault", x: 550, y: 150 },
+    ],
+    architecture_edges: [
+      { from: "client", to: "fastapi", label: "Stream Audio" },
+      { from: "fastapi", to: "whisper", label: "Extract Text" },
+      { from: "fastapi", to: "claude", label: "Structure SOAP" },
+      { from: "fastapi", to: "azure", label: "Store Keys" },
+    ],
+    key_features: [
+      { title: "Secure dictation transcription", description: "Real-time speech-to-text engines fine-tuned with pharmacological vocabulary sets." },
+      { title: "SOAP layout generator", description: "Automatically structure consultation audio logs into standard medical SOAP reports." },
+      { title: "End-to-end HIPAA security", description: "E2E patient record encryption keys managed under strict compliance boundaries." },
+    ],
+    gallery: ["/globe.svg", "/file.svg", "/window.svg"],
   },
   {
     title: "PropVault",
@@ -101,6 +164,24 @@ export const mockProjects: Project[] = [
     timeline: "14 weeks",
     slug: "propvault",
     metric: "2.5× portfolio scaling",
+    architecture_description: "A modern Next.js client interface connected to a Ruby on Rails transaction backend, executing rent splits using Stripe APIs, and storing leases in AWS S3.",
+    architecture_nodes: [
+      { id: "client", label: "Client Frontend", x: 100, y: 150 },
+      { id: "rails", label: "Rails Backend", x: 250, y: 150 },
+      { id: "postgres", label: "PostgreSQL", x: 400, y: 70 },
+      { id: "stripe", label: "Stripe Connect", x: 400, y: 230 },
+    ],
+    architecture_edges: [
+      { from: "client", to: "rails", label: "Request Pay" },
+      { from: "rails", to: "postgres", label: "Query Leases" },
+      { from: "rails", to: "stripe", label: "Execute Payout" },
+    ],
+    key_features: [
+      { title: "Stripe Connect splits", description: "Distribute rent payments instantly between owners, managers, and service providers." },
+      { title: "Lease contract signing", description: "Automated lease document generation and signing integrated directly into dashboards." },
+      { title: "SMS maintenance dispatch", description: "Twilio text trigger workflows assigning issues to closest contracted technicians." },
+    ],
+    gallery: ["/globe.svg", "/file.svg", "/window.svg"],
   }
 ];
 
@@ -303,7 +384,12 @@ export async function getProjects(): Promise<Project[]> {
         timeline: item.metrics?.time_to_ship || "8 weeks",
         slug: item.slug,
         cover_image: item.cover_image || undefined,
-        metric: metricVal
+        metric: metricVal,
+        architecture_description: item.metrics?.architecture_description || "",
+        architecture_nodes: item.metrics?.architecture_nodes || undefined,
+        architecture_edges: item.metrics?.architecture_edges || undefined,
+        key_features: item.metrics?.key_features || undefined,
+        gallery: item.metrics?.gallery || undefined,
       };
     });
   } catch (err) {
@@ -346,7 +432,12 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
       timeline: projectData.metrics?.time_to_ship || "8 weeks",
       slug: projectData.slug,
       cover_image: projectData.cover_image || undefined,
-      metric: metricVal
+      metric: metricVal,
+      architecture_description: projectData.metrics?.architecture_description || "",
+      architecture_nodes: projectData.metrics?.architecture_nodes || undefined,
+      architecture_edges: projectData.metrics?.architecture_edges || undefined,
+      key_features: projectData.metrics?.key_features || undefined,
+      gallery: projectData.metrics?.gallery || undefined,
     };
   } catch (err) {
     console.warn(`Supabase project slug fetch failed for ${slug}, using fallback:`, err);

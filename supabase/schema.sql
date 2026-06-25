@@ -78,6 +78,22 @@ CREATE TABLE IF NOT EXISTS careers (
 );
 
 -- ================================================
+-- CAREER APPLICATIONS TABLE
+-- ================================================
+CREATE TABLE IF NOT EXISTS career_applications (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  name TEXT NOT NULL,
+  email TEXT NOT NULL,
+  github_url TEXT,
+  linkedin_url TEXT,
+  resume_url TEXT,
+  cover_letter TEXT NOT NULL,
+  role_slug TEXT NOT NULL,
+  status TEXT NOT NULL DEFAULT 'new' CHECK (status IN ('new', 'reviewing', 'shortlisted', 'rejected')),
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+-- ================================================
 -- CONTACTS TABLE
 -- ================================================
 CREATE TABLE IF NOT EXISTS contacts (
@@ -152,6 +168,7 @@ ALTER TABLE careers ENABLE ROW LEVEL SECURITY;
 ALTER TABLE contacts ENABLE ROW LEVEL SECURITY;
 ALTER TABLE newsletter ENABLE ROW LEVEL SECURITY;
 ALTER TABLE settings ENABLE ROW LEVEL SECURITY;
+ALTER TABLE career_applications ENABLE ROW LEVEL SECURITY;
 
 -- ==================
 -- PUBLIC READ POLICIES
@@ -196,6 +213,11 @@ CREATE POLICY "Anyone can subscribe to newsletter"
   ON newsletter FOR INSERT
   WITH CHECK (true);
 
+-- Career Applications: anyone can submit
+CREATE POLICY "Anyone can submit a career application"
+  ON career_applications FOR INSERT
+  WITH CHECK (true);
+
 -- ==================
 -- AUTHENTICATED (ADMIN) POLICIES
 -- ==================
@@ -229,6 +251,10 @@ CREATE POLICY "Authenticated users have full access to settings"
   ON settings FOR ALL
   USING (auth.role() = 'authenticated');
 
+CREATE POLICY "Authenticated users have full access to career applications"
+  ON career_applications FOR ALL
+  USING (auth.role() = 'authenticated');
+
 -- ================================================
 -- INDEXES for performance
 -- ================================================
@@ -242,3 +268,4 @@ CREATE INDEX IF NOT EXISTS idx_careers_published ON careers(published);
 CREATE INDEX IF NOT EXISTS idx_contacts_status ON contacts(status);
 CREATE INDEX IF NOT EXISTS idx_contacts_created_at ON contacts(created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_newsletter_email ON newsletter(email);
+CREATE INDEX IF NOT EXISTS idx_career_applications_role ON career_applications(role_slug);

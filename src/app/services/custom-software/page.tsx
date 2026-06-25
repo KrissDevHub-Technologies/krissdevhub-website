@@ -1,49 +1,112 @@
-import Link from "next/link";
-import { Code2, ArrowRight } from "lucide-react";
-import { ScrollReveal } from "@/components/shared/scroll-reveal";
-import { TextReveal } from "@/components/shared/text-reveal";
-import { GradientBlob } from "@/components/shared/gradient-blob";
-import { CtaSection } from "@/features/home/cta-section";
+import { ServicePageTemplate } from "@/features/services/service-page-template";
 import { constructMetadata } from "@/lib/metadata";
 
 export const metadata = constructMetadata({
-  title: "Custom Software Development",
-  description: "Bespoke software engineered for complex business problems that off-the-shelf tools can't solve.",
+  title: "Custom Software",
+  description:
+    "We design and build bespoke software applications modeled specifically around your organization's unique logic, database structures, and daily workflows.",
   canonical: "https://krissdevhub.com/services/custom-software",
 });
 
+const problem = {
+  title: "Adapting your business to rigid off-the-shelf templates",
+  description:
+    "Generic SaaS software forces you to change how your company operates. Teams end up using fragmented workarounds, spreadsheets, and manual emails to patch holes in rigid products, leading to administrative overhead and operational inefficiency.",
+  items: [
+    "Rigid interfaces that cannot be adapted to your unique organization processes.",
+    "High monthly subscription fees for features you do not need or use.",
+    "Inability to integrate with existing proprietary databases or legacy systems.",
+  ],
+};
+
+const solution = {
+  title: "Bespoke software built for your operational model",
+  description:
+    "We design and build custom software architectures tailored directly to your team's workflows. You get complete control of the layout, full codebase ownership, and unlimited customizability to adapt as your business needs scale.",
+  items: [
+    "Modular codebases designed to grow and pivot alongside your organizational changes.",
+    "Clean, typographic UI layouts optimized for maximum speed and daily ease-of-use.",
+    "Direct database access allowing you to perform custom analytics queries and syncs.",
+  ],
+};
+
+const benefits = [
+  {
+    title: "100% Tailored Logic",
+    description:
+      "Every database schema, workflow process, and layout view is modeled exactly around your business structure.",
+    icon: "code2",
+  },
+  {
+    title: "Full Code Ownership",
+    description:
+      "No recurring licensing fees. The complete source code, IP, and hosting configurations are transferred to you.",
+    icon: "key",
+  },
+  {
+    title: "Infinite Scalability",
+    description:
+      "Easily add custom dashboards, connect external APIs, and build new user modules without software constraints.",
+    icon: "sparkles",
+  },
+];
+
+const processSteps = [
+  {
+    number: "01",
+    title: "Domain Scoping & Modeling",
+    description:
+      "We inspect your current workflows, outline key system entities, and design the relational database schema.",
+  },
+  {
+    number: "02",
+    title: "UI Design & Architecture",
+    description:
+      "We design typographic mockups and structure secure cloud pathways to support high-performance operations.",
+  },
+  {
+    number: "03",
+    title: "Iterative Development",
+    description:
+      "We write clean TypeScript code in weekly sprint intervals, delivering working features for your feedback.",
+  },
+  {
+    number: "04",
+    title: "Deploy & Support",
+    description:
+      "We run automated validation tests, deploy to your cloud hosting, and offer monthly retainers for ongoing improvements.",
+  },
+];
+
+const faqs = [
+  {
+    q: "What tech stack do you use for custom software?",
+    a: "We default to Next.js, React, and TypeScript for frontends, paired with PostgreSQL (Supabase) or Node.js for backend servers. This provides excellent rendering speed, robust type safety, and is highly supported by modern developers.",
+  },
+  {
+    q: "Will we own the intellectual property?",
+    a: "Yes. Once the project invoice is cleared, all intellectual property, design templates, and source code belong 100% to you. We transfer everything to your GitHub organization.",
+  },
+  {
+    q: "Can you modernize old legacy software?",
+    a: "Yes. We specialize in legacy modernization, replacing slow, outdated desktop or web software with modern, fast web applications while safely migrating your existing database records.",
+  },
+];
+
 export default function CustomSoftwarePage() {
   return (
-    <>
-      <section className="relative pt-32 pb-24 overflow-hidden">
-        <GradientBlob className="w-[600px] h-[500px] top-0 left-1/2 -translate-x-1/2 opacity-30" color="indigo" />
-        <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center">
-                <Code2 className="w-4 h-4 text-white/80" />
-              </div>
-              <span className="text-xs font-semibold uppercase tracking-widest text-white/40">Custom Software</span>
-            </div>
-          </ScrollReveal>
-          <TextReveal
-            text="Built exactly for how your business works"
-            className="text-4xl sm:text-6xl font-bold tracking-tight text-white mb-6"
-            as="h1"
-          />
-          <ScrollReveal delay={0.2}>
-            <p className="text-xl text-white/50 max-w-2xl leading-relaxed mb-8">
-              When generic tools create workarounds instead of solutions, we engineer software from the ground up — precisely matched to your processes, team, and growth trajectory.
-            </p>
-          </ScrollReveal>
-          <ScrollReveal delay={0.3}>
-            <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-black text-sm font-semibold hover:bg-white/95 transition-all group">
-              Discuss your requirements <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </ScrollReveal>
-        </div>
-      </section>
-      <CtaSection />
-    </>
+    <ServicePageTemplate
+      title="Custom Software"
+      tagline="Bespoke Engineering"
+      heroDescription="Design and engineer tailored software applications modeled directly around your business processes."
+      icon="code2"
+      blobColor="mixed"
+      problem={problem}
+      solution={solution}
+      benefits={benefits}
+      process={processSteps}
+      faqs={faqs}
+      ctaText="Build custom software"
+    />
   );
 }

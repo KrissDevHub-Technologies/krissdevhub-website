@@ -1,84 +1,112 @@
-import Link from "next/link";
-import { Layers, ArrowRight, Check } from "lucide-react";
-import { ScrollReveal } from "@/components/shared/scroll-reveal";
-import { TextReveal } from "@/components/shared/text-reveal";
-import { GradientBlob } from "@/components/shared/gradient-blob";
-import { CtaSection } from "@/features/home/cta-section";
+import { ServicePageTemplate } from "@/features/services/service-page-template";
 import { constructMetadata } from "@/lib/metadata";
 
 export const metadata = constructMetadata({
   title: "SaaS Development",
   description:
-    "Full-stack SaaS product engineering with multi-tenancy, billing, auth, and analytics built in from day one.",
+    "We design and build multi-tenant SaaS products with robust database architectures, secure auth, complex billing setups, and lightning-fast frontends.",
   canonical: "https://krissdevhub.com/services/saas-development",
 });
 
-const features = [
-  "Multi-tenant architecture",
-  "Stripe subscription billing",
-  "Supabase Auth (SSO, magic link, OAuth)",
-  "Team management & permissions",
-  "Usage metering & analytics",
-  "Admin dashboard",
-  "Onboarding flows",
-  "In-app notifications",
-  "API access & webhooks",
-  "Audit logging",
-  "GDPR compliance",
-  "99.9% uptime architecture",
+const problem = {
+  title: "Spending months building boilerplate instead of features",
+  description:
+    "Most SaaS startups waste their first 8 to 12 weeks of engineering budgets building non-differentiating code. Setting up organization structures, invite flows, Stripe webhook handlers, and database permission limits delays your time-to-market and drains capital.",
+  items: [
+    "Stripe webhooks falling out of sync with customer accounts, causing billing leaks.",
+    "Brittle auth rules that allow tenants to read or edit another tenant's data.",
+    "Unscalable database structures that slow down queries as customer counts grow.",
+  ],
+};
+
+const solution = {
+  title: "An enterprise-grade SaaS foundation from day one",
+  description:
+    "We deploy a robust, modern SaaS architecture using Next.js, Postgres (with Row Level Security), and Stripe. All organization logic, invitation flows, and subscription statuses are pre-configured, letting you focus entirely on your core product value.",
+  items: [
+    "Row Level Security (RLS) guaranteeing strict boundary lines for tenant data separation.",
+    "Secure Stripe Billing sync support for tiers, add-ons, coupons, and seat metrics.",
+    "Clean React dashboard components for organization management and member invites.",
+  ],
+};
+
+const benefits = [
+  {
+    title: "Flexible Subscriptions",
+    description:
+      "Configure flat-rate, tiered, usage-based, or seat-based billing with Stripe Customer Portals built right in.",
+    icon: "creditcard",
+  },
+  {
+    title: "RLS Multi-Tenancy",
+    description:
+      "Sleep easily knowing cross-tenant data leaks are mathematically blocked at the Postgres query layer, not just code.",
+    icon: "shieldalert",
+  },
+  {
+    title: "High Performance",
+    description:
+      "Static generation, server component rendering, and smart cache invalidation keep dashboard loads sub-500ms.",
+    icon: "zap",
+  },
 ];
 
-export default function SaasDevPage() {
+const processSteps = [
+  {
+    number: "01",
+    title: "Data Modeling & Scoping",
+    description:
+      "We design the workspace relationship schemas and formulate PostgreSQL permission rules for absolute isolation.",
+  },
+  {
+    number: "02",
+    title: "Auth & Team Workspaces",
+    description:
+      "We set up secure signups, Magic Links, password resets, and invitation links to invite teammates with role scopes.",
+  },
+  {
+    number: "03",
+    title: "Stripe Billing Engine",
+    description:
+      "We build products in Stripe, configure webhooks to process events, and integrate checkout portals for customers.",
+  },
+  {
+    number: "04",
+    title: "Application Buildout & Audit",
+    description:
+      "We construct your unique SaaS features, conduct penetration testing on database policies, and ship to production.",
+  },
+];
+
+const faqs = [
+  {
+    q: "How does Postgres Row Level Security (RLS) protect our data?",
+    a: "RLS attaches safety filters directly to SQL tables. When a query is run, Postgres verifies the tenant ID of the requesting user. Even if an engineer writes a select query missing a WHERE clause, the database itself filters out other tenants' data.",
+  },
+  {
+    q: "Can we migrate users to our own database later?",
+    a: "Yes. We use standard Supabase PostgreSQL setups, giving you full ownership. You can export your schemas, data, and user hashes at any time with no vendor lock-in.",
+  },
+  {
+    q: "Do you support Stripe Connect for marketplaces?",
+    a: "Yes. We have built platforms using Stripe Connect to handle custom payouts, seller onboarding, split payments, and subscription distributions.",
+  },
+];
+
+export default function SaasDevelopmentPage() {
   return (
-    <>
-      <section className="relative pt-32 pb-16 overflow-hidden">
-        <GradientBlob className="w-[600px] h-[500px] -top-40 -right-40 opacity-35" color="purple" />
-        <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center">
-                <Layers className="w-4 h-4 text-white/80" />
-              </div>
-              <span className="text-xs font-semibold uppercase tracking-widest text-white/40">
-                SaaS Development
-              </span>
-            </div>
-          </ScrollReveal>
-          <TextReveal
-            text="SaaS products built to scale from the start"
-            className="text-4xl sm:text-6xl font-bold tracking-tight text-white mb-6"
-            as="h1"
-          />
-          <ScrollReveal delay={0.2}>
-            <p className="text-xl text-white/50 max-w-2xl leading-relaxed mb-8">
-              We build full-stack SaaS platforms with everything you need baked in — not bolted on later. Multi-tenancy, billing, auth, and analytics from day one.
-            </p>
-          </ScrollReveal>
-          <ScrollReveal delay={0.3}>
-            <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-black text-sm font-semibold hover:bg-white/95 transition-all group">
-              Start your SaaS <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </ScrollReveal>
-        </div>
-      </section>
-      <section className="py-16 pb-32">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <h2 className="text-2xl font-bold text-white mb-8">Everything your SaaS needs</h2>
-          </ScrollReveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {features.map((f, i) => (
-              <ScrollReveal key={f} delay={i * 0.04}>
-                <div className="flex items-center gap-3 p-4 rounded-xl bg-[#121212] border border-white/[0.06]">
-                  <Check className="w-4 h-4 text-white/60 flex-shrink-0" />
-                  <span className="text-sm text-white/70">{f}</span>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-      <CtaSection />
-    </>
+    <ServicePageTemplate
+      title="SaaS Development"
+      tagline="SaaS & Full-Stack"
+      heroDescription="Ship custom multi-tenant SaaS platforms with Stripe billing, Supabase auth, and Postgres security policies built-in."
+      icon="layers"
+      blobColor="purple"
+      problem={problem}
+      solution={solution}
+      benefits={benefits}
+      process={processSteps}
+      faqs={faqs}
+      ctaText="Launch your SaaS platform"
+    />
   );
 }

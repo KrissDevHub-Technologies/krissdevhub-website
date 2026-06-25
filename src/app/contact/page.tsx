@@ -267,6 +267,100 @@ export default function ContactPage() {
               </div>
             </ScrollReveal>
           </div>
+
+          {/* Business Hours & Map Section */}
+          <div className="grid lg:grid-cols-2 gap-8 mt-24 items-stretch">
+            <ScrollReveal className="h-full">
+              <div className="p-8 rounded-2xl border border-white/[0.06] bg-[#121212]/40 flex flex-col justify-between h-full">
+                <div>
+                  <h2 className="text-xl font-bold text-white font-space-grotesk mb-4">Availability & Hours</h2>
+                  <p className="text-xs text-white/40 leading-relaxed mb-6 font-light">
+                    We work asynchronously to collaborate with clients across the Americas, Europe, and Asia. Support pipelines are monitored 24/7 for urgent SLA requests.
+                  </p>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-4 mt-auto pt-6 border-t border-white/[0.04]">
+                  <div>
+                    <span className="text-[10px] text-white/30 uppercase block mb-1">Standard Workweek</span>
+                    <span className="text-xs font-semibold text-white">Mon – Fri · 9am – 6pm EST</span>
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-white/30 uppercase block mb-1">Response Guarantee</span>
+                    <span className="text-xs font-semibold text-white">Under 24 Business Hours</span>
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-white/30 uppercase block mb-1">Critical SLA Uptime</span>
+                    <span className="text-xs font-semibold text-white">24/7 Monitoring Alerting</span>
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-white/30 uppercase block mb-1">Direct Communication</span>
+                    <span className="text-xs font-semibold text-white">Dedicated Slack Channel</span>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* Glowing World Map SVG Placeholder */}
+            <ScrollReveal delay={0.1} className="h-full">
+              <div className="rounded-2xl border border-white/[0.06] bg-[#0c0c0c] overflow-hidden relative flex flex-col justify-center items-center p-6 h-full min-h-[250px]">
+                <div className="absolute inset-0 dot-grid opacity-10" />
+                <svg viewBox="0 0 400 200" className="w-full h-full max-w-sm text-white/[0.04]">
+                  <g fill="currentColor">
+                    {/* Abstract cluster points mapping global presence */}
+                    <circle cx="100" cy="80" r="1.5" />
+                    <circle cx="110" cy="75" r="1.5" />
+                    <circle cx="120" cy="85" r="1.5" />
+                    <circle cx="140" cy="90" r="2" />
+                    <circle cx="150" cy="95" r="1" />
+                    <circle cx="220" cy="70" r="1.5" />
+                    <circle cx="230" cy="65" r="2.5" />
+                    <circle cx="240" cy="75" r="1.5" />
+                    <circle cx="310" cy="110" r="2" />
+                    <circle cx="325" cy="100" r="1.5" />
+                  </g>
+                  {/* Signal node indicator SF */}
+                  <g className="animate-pulse">
+                    <circle cx="100" cy="80" r="4" fill="rgba(255,255,255,0.15)" />
+                    <circle cx="100" cy="80" r="2" fill="#fff" />
+                  </g>
+                  {/* Signal node London */}
+                  <g className="animate-pulse">
+                    <circle cx="230" cy="65" r="4" fill="rgba(255,255,255,0.15)" />
+                    <circle cx="230" cy="65" r="2" fill="#fff" />
+                  </g>
+                </svg>
+                <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-md border border-white/[0.06] text-[8px] font-mono text-white/50">
+                  Global Hub Operations: SF · NYC · LDN
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* Contact FAQ Section */}
+          <div className="max-w-3xl mx-auto mt-24">
+            <h2 className="text-2xl font-bold text-center text-white font-space-grotesk mb-10">Onboarding FAQ</h2>
+            <div className="border-t border-white/[0.08]">
+              {[
+                {
+                  q: "What happens after I submit this form?",
+                  a: "We will review your requirements, confirm feasibility, and contact you via email to schedule a 15-minute video call. During that call, we align on goals, budgets, and sketch out initial options.",
+                },
+                {
+                  q: "Do you sign Non-Disclosure Agreements (NDAs)?",
+                  a: "Yes. For established businesses and financed startups, we sign standard NDAs before scoping conversations to protect proprietary systems details.",
+                },
+                {
+                  q: "What are your budget requirements?",
+                  a: "Our software development contracts start at $10k. For ongoing iteration and features expansion, we offer monthly retainer packages tailored to scale operations.",
+                },
+              ].map((faq, i) => (
+                <div key={i} className="border-b border-white/[0.08] py-4">
+                  <h3 className="text-sm font-semibold text-white mb-2 font-space-grotesk">{faq.q}</h3>
+                  <p className="text-xs text-white/45 leading-relaxed font-light">{faq.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
     </>

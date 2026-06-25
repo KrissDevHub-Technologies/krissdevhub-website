@@ -1,107 +1,112 @@
-import Link from "next/link";
-import { Brain, ArrowRight, Check } from "lucide-react";
-import { ScrollReveal } from "@/components/shared/scroll-reveal";
-import { TextReveal } from "@/components/shared/text-reveal";
-import { GradientBlob } from "@/components/shared/gradient-blob";
-import { CtaSection } from "@/features/home/cta-section";
+import { ServicePageTemplate } from "@/features/services/service-page-template";
 import { constructMetadata } from "@/lib/metadata";
 
 export const metadata = constructMetadata({
-  title: "AI Development",
+  title: "AI Application Development",
   description:
-    "LLM integrations, RAG systems, AI agents, and vector databases. We build AI-native features that are production-ready and solve real problems.",
+    "We build production-ready AI agents, Retrieval-Augmented Generation (RAG) systems, and custom LLM integrations that solve business problems with strict guardrails.",
   canonical: "https://krissdevhub.com/services/ai-development",
 });
 
-const offerings = [
+const problem = {
+  title: "AI that works in a demo, but fails in production",
+  description:
+    "Most AI features look magic in a Figma mockup or command-line script, but crumble when exposed to real-world edge cases. Latency spikes, prompt regressions, and runaway token bills often kill AI initiatives before they can deliver return on investment.",
+  items: [
+    "Unoptimized contexts that run up massive OpenAI, Anthropic, or Gemini API bills.",
+    "Hallucinations that break system schemas or surface incorrect calculations to users.",
+    "RAG pipelines that retrieve irrelevant document chunks, producing poor quality outputs.",
+  ],
+};
+
+const solution = {
+  title: "AI engineered with verification guardrails",
+  description:
+    "We don't build toys. We build reliable, self-correcting AI systems that use semantic caching to lower cost, and structured output schemas to prevent failures. Our engineering process treats prompts as code, running evaluations against target test sets.",
+  items: [
+    "Rigid evaluation pipelines to measure prompt output quality quantitatively.",
+    "Semantic query caching reducing recurring API costs by 30% to 50%.",
+    "Advanced hybrid-search indexing (pgvector, Pinecone, or Qdrant) for high-precision RAG.",
+  ],
+};
+
+const benefits = [
   {
-    title: "LLM Integration",
+    title: "Sub-200ms Caching",
     description:
-      "Connect OpenAI, Anthropic, Google Gemini, or open-source models to your product. We handle prompting, context management, streaming, and cost optimization.",
-    features: ["OpenAI GPT-4o", "Anthropic Claude", "Llama fine-tuning", "Streaming responses", "Token optimization"],
+      "Serve frequent user queries instantly from local vector databases, avoiding the latency of third-party API roundtrips.",
+    icon: "zap",
   },
   {
-    title: "RAG Systems",
+    title: "Cost Management",
     description:
-      "Retrieval-Augmented Generation lets your AI answer questions from your own data. We build the ingestion pipeline, embedding strategy, and retrieval logic.",
-    features: ["Document ingestion", "Chunking strategies", "Semantic search", "Pinecone / pgvector", "Reranking"],
+      "Compress prompts, optimize context windows, and dynamically route tasks to cost-efficient open-source or mini models.",
+    icon: "cpu",
   },
   {
-    title: "AI Agents",
+    title: "Rigid Guardrails",
     description:
-      "Autonomous agents that reason, plan, and use tools to complete complex tasks. From customer service agents to internal knowledge workers.",
-    features: ["Tool use / function calling", "Multi-step reasoning", "Memory systems", "Agent orchestration", "Monitoring"],
+      "Wrap completions in strict parser schemas to guarantee that returned responses conform 100% to your database types.",
+    icon: "shield",
+  },
+];
+
+const processSteps = [
+  {
+    number: "01",
+    title: "Feasibility & Cost Estimation",
+    description:
+      "We analyze your proprietary data sources, identify target models, and calculate expected API costs before writing code.",
   },
   {
-    title: "Vector Databases",
+    number: "02",
+    title: "Prompt Engineering & RAG Design",
     description:
-      "We design and implement vector storage and retrieval strategies optimized for your use case — whether it's semantic search, recommendations, or memory.",
-    features: ["Pinecone", "pgvector", "Weaviate", "Qdrant", "Hybrid search"],
+      "We write system prompts, set up secure data parsing pipelines (PDFs, DBs), and configure semantic search vector indexers.",
+  },
+  {
+    number: "03",
+    title: "Integration & Caching Setup",
+    description:
+      "We integrate the AI pathways into your App Router server actions, deploy caching layers, and implement model fallback logic.",
+  },
+  {
+    number: "04",
+    title: "Continuous Evaluation",
+    description:
+      "We run bulk tests to verify prompt performance and latency benchmarks under high concurrent user simulations.",
+  },
+];
+
+const faqs = [
+  {
+    q: "How do you prevent AI models from hallucinating?",
+    a: "We use structured output formats (like JSON Mode or tool calling) paired with Zod schema verification. Furthermore, we scope the context window strictly to verified documents fetched via Retrieval-Augmented Generation (RAG). If the document doesn't contain the answer, we instruct the model to say so rather than guess.",
+  },
+  {
+    q: "What vector databases do you recommend?",
+    a: "For Next.js and Supabase projects, pgvector is our default choice since it allows query joins directly with core business data. For heavy enterprise workloads or multi-tenant setups with millions of vectors, we deploy dedicated clusters on Pinecone or Qdrant.",
+  },
+  {
+    q: "Can you help us fine-tune models?",
+    a: "Yes. While RAG solves 90% of data access problems, fine-tuning is useful for teaching a model a specific voice, custom syntax, or formatting. We fine-tune models like Llama 3 or GPT-4o-mini using curated instruction datasets.",
   },
 ];
 
 export default function AiDevelopmentPage() {
   return (
-    <>
-      <section className="relative pt-32 pb-16 overflow-hidden">
-        <GradientBlob className="w-[600px] h-[500px] -top-40 -left-40 opacity-40" color="blue" />
-        <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center">
-                <Brain className="w-4 h-4 text-white/80" />
-              </div>
-              <span className="text-xs font-semibold uppercase tracking-widest text-white/40">
-                AI Development
-              </span>
-            </div>
-          </ScrollReveal>
-          <TextReveal
-            text="AI that earns its place in your product"
-            className="text-4xl sm:text-6xl font-bold tracking-tight text-white mb-6"
-            as="h1"
-          />
-          <ScrollReveal delay={0.2}>
-            <p className="text-xl text-white/50 max-w-2xl leading-relaxed mb-8">
-              We build AI features that work reliably in production — not demos that impress investors but fail users. From LLM integrations to full autonomous agents.
-            </p>
-          </ScrollReveal>
-          <ScrollReveal delay={0.3}>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-black text-sm font-semibold hover:bg-white/95 transition-all group"
-            >
-              Discuss your AI project
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      <section className="py-16 pb-32">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {offerings.map((item, i) => (
-              <ScrollReveal key={item.title} delay={i * 0.08}>
-                <div className="p-6 rounded-2xl bg-[#121212] border border-white/[0.06] hover:border-white/[0.14] transition-all duration-300 h-full">
-                  <h2 className="text-lg font-semibold text-white mb-2">{item.title}</h2>
-                  <p className="text-sm text-white/50 leading-relaxed mb-4">{item.description}</p>
-                  <ul className="space-y-1.5">
-                    {item.features.map((f) => (
-                      <li key={f} className="flex items-center gap-2 text-sm text-white/50">
-                        <Check className="w-3.5 h-3.5 text-white/60 flex-shrink-0" />
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <CtaSection />
-    </>
+    <ServicePageTemplate
+      title="AI Application Development"
+      tagline="AI & Machine Learning"
+      heroDescription="Build production-grade AI agents, RAG systems, and semantic tools that integrate safely with your data infrastructure."
+      icon="brain"
+      blobColor="blue"
+      problem={problem}
+      solution={solution}
+      benefits={benefits}
+      process={processSteps}
+      faqs={faqs}
+      ctaText="Build your AI product"
+    />
   );
 }
