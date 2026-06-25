@@ -38,26 +38,54 @@ const supabase = createClient(supabaseUrl, serviceKey);
 const email = process.argv[2] || 'admin@krissdevhub.com';
 const password = process.argv[3] || 'AdminPassword123!';
 
-async function createAdmin() {
-  console.log(`Creating admin account for ${email}...`);
+async function saveAdminUser() {
+  console.log(`Checking if user ${email} already exists...`);
   
-  const { data, error } = await supabase.auth.admin.createUser({
-    email: email,
-    password: password,
-    email_confirm: true // Automatically confirm email
-  });
+  const { data: { users }, error: listError } = await supabase.auth.admin.listUsers();
+  
+  if (listError) {
+    console.error("Error checking users list:", listError.message);
+    process.exit(1);
+  }
 
-  if (error) {
-    console.error("Error creating admin user:", error.message);
+  const existingUser = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+
+  if (existingUser) {
+    console.log(`User already exists. Updating password for ${email}...`);
+    const { data, error } = await supabase.auth.admin.updateUserById(existingUser.id, {
+      password: password,
+      email_confirm: true
+    });
+
+    if (error) {
+      console.error("Error updating user password:", error.message);
+    } else {
+      console.log("--------------------------------------------------");
+      console.log("SUCCESS: Password Updated Successfully!");
+      console.log("--------------------------------------------------");
+      console.log(`Email ID: ${data.user.email}`);
+      console.log(`Password: ${password}`);
+      console.log("--------------------------------------------------");
+    }
   } else {
-    console.log("--------------------------------------------------");
-    console.log("SUCCESS: Admin User Created Successfully!");
-    console.log("--------------------------------------------------");
-    console.log(`Email ID: ${data.user.email}`);
-    console.log(`Password: ${password}`);
-    console.log("--------------------------------------------------");
-    console.log("You can now use these credentials to log in at /admin/login");
+    console.log(`Creating new admin account for ${email}...`);
+    const { data, error } = await supabase.auth.admin.createUser({
+      email: email,
+      password: password,
+      email_confirm: true
+    });
+
+    if (error) {
+      console.error("Error creating admin user:", error.message);
+    } else {
+      console.log("--------------------------------------------------");
+      console.log("SUCCESS: Admin User Created Successfully!");
+      console.log("--------------------------------------------------");
+      console.log(`Email ID: ${data.user.email}`);
+      console.log(`Password: ${password}`);
+      console.log("--------------------------------------------------");
+    }
   }
 }
 
-createAdmin();
+saveAdminUser();
