@@ -1,10 +1,18 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { siteConfig, footerLinks } from "@/lib/constants";
 import { ArrowUpRight } from "lucide-react";
 import { KLogo } from "@/components/shared/k-logo";
 
 export function Footer() {
+  const pathname = usePathname();
   const currentYear = new Date().getFullYear();
+
+  if (pathname && pathname.startsWith("/admin")) {
+    return null;
+  }
 
   return (
     <footer className="relative border-t border-white/[0.08] bg-[#090909]">
