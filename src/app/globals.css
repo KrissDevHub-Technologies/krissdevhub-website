@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg: #090909;
+    --surface: #111111;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(255, 255, 255, 0.16);
+    --white: #ffffff;
+    --gray-muted: rgba(255, 255, 255, 0.45);
+    --gray-secondary: rgba(255, 255, 255, 0.6);
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-full: 9999px;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    background-color: var(--bg);
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--white);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* Minimal scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-full);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--white);
+  }
+}
+
+@layer utilities {
+  /* Spacing */
+  .section-padding {
+    padding-top: clamp(8rem, 12vw, 16rem);
+    padding-bottom: clamp(8rem, 12vw, 16rem);
+  }
+
+  /* Premium Buttons */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border-radius: var(--radius-full);
+    background: var(--white);
+    color: #000000;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.2s ease, opacity 0.2s ease;
+    text-decoration: none;
+    border: 1px solid var(--white);
+    cursor: pointer;
+  }
+  .btn-primary:hover {
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border-radius: var(--radius-full);
+    background: transparent;
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    cursor: pointer;
+  }
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--border-hover);
+  }
+
+  /* Clean Borders */
+  .border-hairline {
+    border: 1px solid var(--border);
+  }
+
+  /* Premium Card (Flat, sharp, padded) */
+  .premium-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .premium-card:hover {
+    border-color: var(--border-hover);
+  }
+}
