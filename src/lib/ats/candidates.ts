@@ -96,6 +96,32 @@ export async function getCandidates(
         `full_name.ilike.%${filters.search}%,email.ilike.%${filters.search}%`
       );
     }
+    if (filters?.country) {
+      query = query.ilike("location", `%${filters.country}%`);
+    }
+    if (filters?.skill) {
+      query = query.overlaps("skills", [filters.skill]);
+    }
+    if (filters?.category && filters.category !== "all") {
+      const { data: catJobs } = await supabase
+        .from("jobs")
+        .select("id")
+        .eq("department", "AI Workforce");
+      
+      const workforceJobIds = (catJobs ?? []).map((j: { id: string }) => j.id);
+      
+      if (filters.category === "workforce") {
+        if (workforceJobIds.length > 0) {
+          query = query.in("job_id", workforceJobIds);
+        } else {
+          return { candidates: [], total: 0 };
+        }
+      } else if (filters.category === "ats") {
+        if (workforceJobIds.length > 0) {
+          query = query.not("job_id", "in", `(${workforceJobIds.join(",")})`);
+        }
+      }
+    }
 
     const { data, error, count } = await query;
     if (error) throw error;

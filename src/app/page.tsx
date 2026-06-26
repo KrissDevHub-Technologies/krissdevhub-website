@@ -1,6 +1,7 @@
 import { HeroSection } from "@/features/home/hero-section";
 import { LogosSection } from "@/features/home/logos-section";
 import { CapabilitiesSection } from "@/features/home/capabilities-section";
+import { WorkforceSection } from "@/features/home/workforce-section";
 import { WhyUsSection } from "@/features/home/why-us-section";
 import { ProcessSection } from "@/features/home/process-section";
 import { ProjectsSection } from "@/features/home/projects-section";
@@ -18,6 +19,7 @@ export default function HomePage() {
       <HeroSection />
       <LogosSection />
       <CapabilitiesSection />
+      <WorkforceSection />
       <WhyUsSection />
       <ProcessSection />
       <ProjectsSection />

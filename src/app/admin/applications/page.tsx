@@ -9,7 +9,15 @@ export const dynamic = "force-dynamic";
 export default async function ApplicationsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ job?: string; status?: string; page?: string }>;
+  searchParams: Promise<{
+    job?: string;
+    status?: string;
+    page?: string;
+    category?: string;
+    skill?: string;
+    country?: string;
+    experience?: string;
+  }>;
 }) {
   const supabase = await createClient();
   const {
@@ -23,6 +31,10 @@ export default async function ApplicationsPage({
     {
       job_id: sp.job,
       status: (sp.status as any) ?? "all",
+      category: sp.category as any,
+      skill: sp.skill,
+      country: sp.country,
+      min_experience: sp.experience ? parseInt(sp.experience) : undefined,
     },
     page,
     12

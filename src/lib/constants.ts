@@ -28,6 +28,7 @@ export const navLinks = [
       { label: "MVP Development", href: "/services/mvp-development", description: "Validate ideas and ship working software in 4-8 weeks" },
     ],
   },
+  { label: "AI Workforce", href: "/ai-workforce" },
   { label: "Portfolio", href: "/portfolio" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "About", href: "/about" },
@@ -46,6 +47,7 @@ export const footerLinks = {
   ],
   company: [
     { label: "About", href: "/about" },
+    { label: "AI Workforce", href: "/ai-workforce" },
     { label: "Portfolio", href: "/portfolio" },
     { label: "Case Studies", href: "/case-studies" },
     { label: "Blog", href: "/blog" },

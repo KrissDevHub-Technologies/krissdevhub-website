@@ -26,6 +26,7 @@ const services = [
   "Custom Software",
   "API Integrations",
   "Automation",
+  "Hire AI Workforce",
   "Not sure yet",
 ];
 

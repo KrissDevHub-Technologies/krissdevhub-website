@@ -48,6 +48,10 @@ export function ApplicationsClient({ initialCandidates, total, page, jobs }: Pro
 
   const currentStatus = sp.get("status") ?? "all";
   const currentJob = sp.get("job") ?? "";
+  const currentCategory = sp.get("category") ?? "all";
+  const currentSkill = sp.get("skill") ?? "";
+  const currentCountry = sp.get("country") ?? "";
+  const currentExperience = sp.get("experience") ?? "";
   const pageSize = 12;
   const totalPages = Math.ceil(total / pageSize);
 
@@ -88,16 +92,16 @@ export function ApplicationsClient({ initialCandidates, total, page, jobs }: Pro
       </div>
 
       {/* Filters */}
-      <div className="flex flex-col sm:flex-row gap-3">
-        <div className="relative max-w-xs">
+      <div className="flex flex-wrap gap-3 items-center">
+        <div className="relative">
           <SlidersHorizontal className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-white/25" />
           <select
             value={currentJob}
             onChange={(e) => updateFilter("job", e.target.value)}
-            className="w-full pl-9 pr-4 py-2 bg-white/[0.03] border border-white/[0.08] rounded-xl text-xs text-white focus:outline-none focus:ring-1 focus:ring-white/20 transition-all appearance-none"
+            className="pl-9 pr-8 py-2 bg-white/[0.03] border border-white/[0.08] rounded-xl text-xs text-white focus:outline-none focus:ring-1 focus:ring-white/20 transition-all appearance-none"
           >
             <option value="" className="bg-[#1a1a1a]">
-              All Jobs
+              All Roles
             </option>
             {jobs.map((j) => (
               <option key={j.id} value={j.id} className="bg-[#1a1a1a]">
@@ -107,7 +111,53 @@ export function ApplicationsClient({ initialCandidates, total, page, jobs }: Pro
           </select>
         </div>
 
-        <div className="flex flex-wrap gap-1.5">
+        <div>
+          <select
+            value={currentCategory}
+            onChange={(e) => updateFilter("category", e.target.value)}
+            className="pl-3 pr-8 py-2 bg-white/[0.03] border border-white/[0.08] rounded-xl text-xs text-white focus:outline-none focus:ring-1 focus:ring-white/20 transition-all appearance-none"
+          >
+            <option value="all" className="bg-[#1a1a1a]">All Categories</option>
+            <option value="ats" className="bg-[#1a1a1a]">Standard ATS</option>
+            <option value="workforce" className="bg-[#1a1a1a]">AI Workforce</option>
+          </select>
+        </div>
+
+        <div>
+          <input
+            type="text"
+            placeholder="Filter by Skill"
+            value={currentSkill}
+            onChange={(e) => updateFilter("skill", e.target.value)}
+            className="pl-3 pr-4 py-2 bg-white/[0.03] border border-white/[0.08] rounded-xl text-xs text-white focus:outline-none focus:ring-1 focus:ring-white/20 transition-all placeholder:text-white/20 w-36"
+          />
+        </div>
+
+        <div>
+          <input
+            type="text"
+            placeholder="Filter by Country"
+            value={currentCountry}
+            onChange={(e) => updateFilter("country", e.target.value)}
+            className="pl-3 pr-4 py-2 bg-white/[0.03] border border-white/[0.08] rounded-xl text-xs text-white focus:outline-none focus:ring-1 focus:ring-white/20 transition-all placeholder:text-white/20 w-36"
+          />
+        </div>
+
+        <div>
+          <select
+            value={currentExperience}
+            onChange={(e) => updateFilter("experience", e.target.value)}
+            className="pl-3 pr-8 py-2 bg-white/[0.03] border border-white/[0.08] rounded-xl text-xs text-white focus:outline-none focus:ring-1 focus:ring-white/20 transition-all appearance-none"
+          >
+            <option value="" className="bg-[#1a1a1a]">Any Experience</option>
+            <option value="1" className="bg-[#1a1a1a]">1+ Years</option>
+            <option value="3" className="bg-[#1a1a1a]">3+ Years</option>
+            <option value="5" className="bg-[#1a1a1a]">5+ Years</option>
+            <option value="8" className="bg-[#1a1a1a]">8+ Years</option>
+          </select>
+        </div>
+
+        <div className="flex flex-wrap gap-1.5 ml-auto">
           {ALL_STATUSES.slice(0, 6).map((s) => (
             <button
               key={s}

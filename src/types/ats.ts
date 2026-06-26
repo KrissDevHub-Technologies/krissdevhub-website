@@ -162,6 +162,9 @@ export interface CandidateFilters {
   status?: CandidateStatus | 'all';
   min_experience?: number;
   max_experience?: number;
+  skill?: string;
+  country?: string;
+  category?: 'all' | 'ats' | 'workforce';
 }
 
 // ================================================
