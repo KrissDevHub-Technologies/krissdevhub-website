@@ -100,6 +100,10 @@ CREATE POLICY "Authenticated full access to candidates"
   ON candidates FOR ALL
   USING (auth.role() = 'authenticated');
 
+-- Grant access to all standard Supabase roles
+GRANT ALL ON TABLE jobs TO postgres, anon, authenticated, service_role;
+GRANT ALL ON TABLE candidates TO postgres, anon, authenticated, service_role;
+
 -- ================================================
 -- INDEXES
 -- ================================================
