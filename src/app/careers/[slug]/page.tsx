@@ -127,7 +127,7 @@ export default async function CareerDetailPage({
                 </span>
               )}
             </div>
-            <p className="text-white/60 leading-relaxed font-light text-sm">
+            <p className="text-white/60 leading-relaxed font-light text-sm whitespace-pre-line">
               {job.description}
             </p>
           </div>
