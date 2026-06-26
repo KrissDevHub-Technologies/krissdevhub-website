@@ -1,22 +1,26 @@
 import Link from "next/link";
 import {
-  ArrowUpRight,
-  MapPin,
-  Clock,
-  Briefcase,
   Globe,
   Clock3,
   BookOpen,
   Laptop,
   Umbrella,
   TrendingUp,
+  Search,
+  Briefcase,
+  MapPin,
+  Star,
 } from "lucide-react";
 import { ScrollReveal } from "@/components/shared/scroll-reveal";
 import { TextReveal } from "@/components/shared/text-reveal";
 import { GradientBlob } from "@/components/shared/gradient-blob";
 import { CtaSection } from "@/features/home/cta-section";
 import { constructMetadata } from "@/lib/metadata";
-import { getCareers } from "@/lib/data-fetcher";
+import { getOpenJobs, getJobDepartments, getJobLocations } from "@/lib/ats/jobs";
+import { JobCard } from "@/components/ats/job-card";
+import { CareersFiltersClient } from "./careers-filters-client";
+
+export const dynamic = "force-dynamic";
 
 export const metadata = constructMetadata({
   title: "Careers",
@@ -35,9 +39,18 @@ const perks = [
 ];
 
 export default async function CareersPage() {
-  const openRoles = await getCareers();
+  const [allJobs, departments, locations] = await Promise.all([
+    getOpenJobs(),
+    getJobDepartments(),
+    getJobLocations(),
+  ]);
+
+  const featuredJobs = allJobs.filter((j) => j.featured);
+  const openCount = allJobs.length;
+
   return (
     <>
+      {/* Hero */}
       <section className="relative pt-32 pb-16 overflow-hidden">
         <GradientBlob className="w-[500px] h-[500px] -top-40 -right-40 opacity-25" color="indigo" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
@@ -57,6 +70,17 @@ export default async function CareersPage() {
               enormously about the quality of what we ship.
             </p>
           </ScrollReveal>
+
+          {openCount > 0 && (
+            <ScrollReveal delay={0.3}>
+              <div className="mt-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="text-xs text-emerald-400 font-medium">
+                  {openCount} open position{openCount !== 1 ? "s" : ""}
+                </span>
+              </div>
+            </ScrollReveal>
+          )}
         </div>
       </section>
 
@@ -80,7 +104,7 @@ export default async function CareersPage() {
             })}
           </div>
 
-          {/* Culture Section */}
+          {/* Culture */}
           <div className="mb-24">
             <ScrollReveal>
               <span className="text-[10px] tracking-[0.15em] uppercase text-white/30 font-medium font-space-grotesk mb-4 block">
@@ -92,7 +116,7 @@ export default async function CareersPage() {
               {[
                 { title: "Deep Focus Over Meetings", desc: "We protect developer time. We have zero daily stands, no status calls, and run our sprint scoping asynchronously." },
                 { title: "Craft Over Speed", desc: "We prioritize clean structures, strict TypeScript interfaces, and SQL policies. We write code we are proud to transfer." },
-                { title: "Extreme Ownership", desc: "Engineers own their code from strategy to deployment. You work in direct contact with clients and ship features weekly." }
+                { title: "Extreme Ownership", desc: "Engineers own their code from strategy to deployment. You work in direct contact with clients and ship features weekly." },
               ].map((c, i) => (
                 <ScrollReveal key={i} delay={i * 0.08}>
                   <div className="p-6 rounded-2xl bg-[#121212]/50 border border-white/[0.04] hover:border-white/[0.08] transition-colors">
@@ -118,7 +142,7 @@ export default async function CareersPage() {
                 { step: "02", name: "Intro Chat", desc: "A 15-minute video call to align on goals and role expectations." },
                 { step: "03", name: "Technical sync", desc: "A deep dive into system design patterns you have implemented." },
                 { step: "04", name: "Paid project trial", desc: "A 1-week paid contract sprint building a custom feature." },
-                { step: "05", name: "Final Offer", desc: "IP sign-off and permanent onboarding." }
+                { step: "05", name: "Final Offer", desc: "IP sign-off and permanent onboarding." },
               ].map((p, i) => (
                 <ScrollReveal key={i} delay={i * 0.06}>
                   <div className="p-5 rounded-2xl bg-[#111111] border border-white/[0.06] flex flex-col justify-between h-full relative">
@@ -133,56 +157,54 @@ export default async function CareersPage() {
             </div>
           </div>
 
-          {/* Open roles */}
-          <div className="max-w-3xl">
-            <TextReveal
-              text="Open positions"
-              className="text-3xl font-bold text-white mb-8"
-              as="h2"
-            />
-
-            <div className="space-y-3">
-              {openRoles.map((role, i) => (
-                <ScrollReveal key={role.slug} delay={i * 0.07}>
-                  <Link
-                    href={`/careers/${role.slug}`}
-                    className="flex items-center justify-between p-5 rounded-2xl bg-[#121212] border border-white/[0.06] hover:border-white/[0.14] transition-all duration-200 group"
-                  >
-                    <div>
-                      <h3 className="text-sm font-semibold text-white group-hover:text-white/80 transition-colors mb-1">
-                        {role.title}
-                      </h3>
-                      <div className="flex items-center gap-3 text-xs text-white/30">
-                        <span className="flex items-center gap-1">
-                          <Briefcase className="w-3 h-3" /> {role.department}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <MapPin className="w-3 h-3" /> {role.location}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Clock className="w-3 h-3" /> {role.type}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <div className="hidden sm:flex gap-1.5">
-                        {role.tags.map((t) => (
-                          <span key={t} className="text-xs px-2.5 py-0.5 rounded-md bg-white/[0.04] text-white/40 border border-white/[0.06] font-mono">
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                      <ArrowUpRight className="w-4 h-4 text-white/20 group-hover:text-white/60 transition-colors" />
-                    </div>
-                  </Link>
-                </ScrollReveal>
-              ))}
+          {/* Open Roles */}
+          <div>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
+              <TextReveal
+                text="Open positions"
+                className="text-3xl font-bold text-white"
+                as="h2"
+              />
+              {openCount > 0 && (
+                <span className="text-sm text-white/30 font-mono">
+                  {openCount} role{openCount !== 1 ? "s" : ""}
+                </span>
+              )}
             </div>
+
+            {/* Featured Jobs Banner */}
+            {featuredJobs.length > 0 && (
+              <ScrollReveal>
+                <div className="mb-6 p-4 rounded-2xl bg-amber-500/5 border border-amber-500/15">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Star className="w-3.5 h-3.5 text-amber-400" />
+                    <span className="text-[10px] font-semibold uppercase tracking-wider text-amber-400/80">
+                      Featured Openings
+                    </span>
+                  </div>
+                  <div className="space-y-2">
+                    {featuredJobs.map((job) => (
+                      <JobCard key={job.id} job={job} variant="featured" />
+                    ))}
+                  </div>
+                </div>
+              </ScrollReveal>
+            )}
+
+            {/* All Jobs with client-side filters */}
+            <CareersFiltersClient
+              allJobs={allJobs}
+              departments={departments}
+              locations={locations}
+            />
 
             <ScrollReveal delay={0.3}>
               <p className="mt-8 text-sm text-white/30">
                 Don&apos;t see your role?{" "}
-                <a href="mailto:careers@krissdevhub.com" className="text-white hover:text-white/80 transition-colors underline underline-offset-4">
+                <a
+                  href="mailto:careers@krissdevhub.com"
+                  className="text-white hover:text-white/80 transition-colors underline underline-offset-4"
+                >
                   Send us your CV anyway
                 </a>{" "}
                 — we&apos;re always open to exceptional people.
@@ -191,6 +213,7 @@ export default async function CareersPage() {
           </div>
         </div>
       </section>
+
       <CtaSection />
     </>
   );

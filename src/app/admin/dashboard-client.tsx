@@ -325,7 +325,7 @@ export default function DashboardClient({ userEmail }: DashboardClientProps) {
   const uniqueBudgets = getUniqueValues("budget");
 
   return (
-    <div className="min-h-screen bg-[#090909] text-white font-sans selection:bg-white/10 flex flex-col">
+    <div className="bg-[#090909] text-white font-sans selection:bg-white/10 flex flex-col min-h-full">
       {/* 1. Header */}
       <header className="border-b border-white/[0.04] bg-[#0c0c0c] px-6 py-4 flex items-center justify-between relative z-20">
         <div className="flex items-center gap-3">

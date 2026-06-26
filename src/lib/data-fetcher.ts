@@ -653,24 +653,32 @@ export async function getCareers(): Promise<CareerRole[]> {
   try {
     const supabase = await createClient();
     const { data, error } = await supabase
-      .from("careers")
+      .from("jobs")
       .select("*")
-      .eq("published", true);
+      .eq("status", "open");
 
     if (error) throw error;
     if (!data || data.length === 0) return mockCareers;
 
-    return data.map((item: any) => ({
-      title: item.title,
-      department: item.department,
-      location: item.location,
-      type: item.type,
-      slug: item.slug,
-      tags: item.requirements?.slice(0, 3) || [],
-      description: item.description,
-      requirements: item.requirements || [],
-      salary_range: item.salary_range
-    }));
+    return data.map((item: any) => {
+      const salaryRange = item.salary_min && item.salary_max
+        ? `$${Math.round(item.salary_min / 1000)}k - $${Math.round(item.salary_max / 1000)}k`
+        : item.salary_min
+        ? `$${Math.round(item.salary_min / 1000)}k+`
+        : undefined;
+
+      return {
+        title: item.title,
+        department: item.department,
+        location: item.location,
+        type: item.employment_type,
+        slug: item.slug,
+        tags: item.requirements?.slice(0, 3) || [],
+        description: item.description,
+        requirements: item.requirements || [],
+        salary_range: salaryRange
+      };
+    });
   } catch (err) {
     console.warn("Supabase careers fetch failed, using fallback:", err);
     return mockCareers;
@@ -681,26 +689,32 @@ export async function getCareerBySlug(slug: string): Promise<CareerRole | null> 
   try {
     const supabase = await createClient();
     const { data, error } = await supabase
-      .from("careers")
+      .from("jobs")
       .select("*")
       .eq("slug", slug)
+      .eq("status", "open")
       .single();
 
     if (error) throw error;
     if (!data) return mockCareers.find((c) => c.slug === slug) || null;
 
     const careerData = data as any;
+    const salaryRange = careerData.salary_min && careerData.salary_max
+      ? `$${Math.round(careerData.salary_min / 1000)}k - $${Math.round(careerData.salary_max / 1000)}k`
+      : careerData.salary_min
+      ? `$${Math.round(careerData.salary_min / 1000)}k+`
+      : undefined;
 
     return {
       title: careerData.title,
       department: careerData.department,
       location: careerData.location,
-      type: careerData.type,
+      type: careerData.employment_type,
       slug: careerData.slug,
       tags: careerData.requirements?.slice(0, 3) || [],
       description: careerData.description,
       requirements: careerData.requirements || [],
-      salary_range: careerData.salary_range
+      salary_range: salaryRange
     };
   } catch (err) {
     console.warn(`Supabase career slug fetch failed for ${slug}, using fallback:`, err);
