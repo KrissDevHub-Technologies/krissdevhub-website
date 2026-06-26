@@ -5,7 +5,7 @@ export const metadata = constructMetadata({
   title: "AI Application Development",
   description:
     "We build production-ready AI agents, Retrieval-Augmented Generation (RAG) systems, and custom LLM integrations that solve business problems with strict guardrails.",
-  canonical: "https://krissdevhub.com/services/ai-development",
+  canonical: "https://krissdevhub.dev/services/ai-development",
 });
 
 const problem = {

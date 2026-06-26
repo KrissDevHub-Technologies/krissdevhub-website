@@ -79,7 +79,7 @@ export default function AdminLoginPage() {
                 <input
                   id="login-email"
                   type="email"
-                  placeholder="admin@krissdevhub.com"
+                  placeholder="admin@krissdevhub.dev"
                   className={inputBase}
                   {...register("email")}
                   aria-invalid={!!errors.email}

@@ -65,7 +65,7 @@ export default function ContactPage() {
         setIsSuccess(true);
         reset();
       } catch (err: any) {
-        setServerError(err.message || "Something went wrong. Please email us directly at hello@krissdevhub.com");
+        setServerError(err.message || "Something went wrong. Please email us directly at hello@krissdevhub.dev");
       }
     });
   };

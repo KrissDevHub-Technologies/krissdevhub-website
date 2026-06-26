@@ -10,7 +10,7 @@ export const metadata = constructMetadata({
   title: "About",
   description:
     "We are KrissDevHub Technologies — an AI-native software engineering studio helping startups and SMBs build technology that scales.",
-  canonical: "https://krissdevhub.com/about",
+  canonical: "https://krissdevhub.dev/about",
 });
 
 const values = [
@@ -42,8 +42,8 @@ const aboutSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "KrissDevHub Technologies",
-  "url": "https://krissdevhub.com",
-  "logo": "https://krissdevhub.com/icon.png",
+  "url": "https://krissdevhub.dev",
+  "logo": "https://krissdevhub.dev/icon.png",
   "description": "AI-native software engineering studio helping startups and enterprise clients build scalable Next.js systems.",
   "sameAs": [
     "https://github.com/krissdevhub",

@@ -35,7 +35,7 @@ if (!supabaseUrl || !serviceKey) {
 const supabase = createClient(supabaseUrl, serviceKey);
 
 // Read arguments or use defaults
-const email = process.argv[2] || 'admin@krissdevhub.com';
+const email = process.argv[2] || 'admin@krissdevhub.dev';
 const password = process.argv[3] || 'AdminPassword123!';
 
 async function saveAdminUser() {

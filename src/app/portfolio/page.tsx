@@ -10,7 +10,7 @@ export const metadata = constructMetadata({
   title: "Portfolio",
   description:
     "Explore KrissDevHub's custom software engineering portfolio. View our featured AI platforms, SaaS applications, custom solutions, and enterprise integrations.",
-  canonical: "https://krissdevhub.com/portfolio",
+  canonical: "https://krissdevhub.dev/portfolio",
 });
 
 export default async function PortfolioPage() {

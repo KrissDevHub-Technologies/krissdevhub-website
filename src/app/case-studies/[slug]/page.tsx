@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return constructMetadata({
     title: project.title,
     description: project.description,
-    canonical: `https://krissdevhub.com/case-studies/${slug}`,
+    canonical: `https://krissdevhub.dev/case-studies/${slug}`,
   });
 }
 

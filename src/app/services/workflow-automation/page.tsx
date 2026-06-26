@@ -5,7 +5,7 @@ export const metadata = constructMetadata({
   title: "Workflow Automation",
   description:
     "Eliminate manual data syncing, automate repetitive steps, and run event-driven background queues securely within your cloud infrastructure.",
-  canonical: "https://krissdevhub.com/services/workflow-automation",
+  canonical: "https://krissdevhub.dev/services/workflow-automation",
 });
 
 const problem = {

@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: BlogSlugParams) {
   return constructMetadata({
     title: post.title,
     description: post.excerpt,
-    canonical: `https://krissdevhub.com/blog/${slug}`,
+    canonical: `https://krissdevhub.dev/blog/${slug}`,
   });
 }
 
@@ -48,12 +48,12 @@ export default async function BlogPostPage({ params }: BlogSlugParams) {
       "name": "KrissDevHub Technologies",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://krissdevhub.com/icon.png"
+        "url": "https://krissdevhub.dev/icon.png"
       }
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://krissdevhub.com/blog/${slug}`
+      "@id": `https://krissdevhub.dev/blog/${slug}`
     }
   };
 

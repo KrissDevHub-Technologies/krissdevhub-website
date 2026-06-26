@@ -5,7 +5,7 @@ export const metadata = constructMetadata({
   title: "API Development",
   description:
     "We design, build, and document secure, high-throughput REST and GraphQL APIs with robust authentication, rate limiting, and Redis caching.",
-  canonical: "https://krissdevhub.com/services/api-development",
+  canonical: "https://krissdevhub.dev/services/api-development",
 });
 
 const problem = {

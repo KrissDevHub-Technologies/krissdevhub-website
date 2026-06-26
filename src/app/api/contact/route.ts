@@ -50,8 +50,8 @@ export async function POST(req: NextRequest) {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            from: "KrissDevHub <noreply@krissdevhub.com>",
-            to: ["hello@krissdevhub.com"],
+            from: "KrissDevHub <noreply@krissdevhub.dev>",
+            to: ["hello@krissdevhub.dev"],
             subject: `New inquiry from ${name}`,
             html: `
               <div style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:24px;background:#050505;color:#fff;border-radius:12px;">

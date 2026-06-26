@@ -5,7 +5,7 @@ export const metadata = constructMetadata({
   title: "Custom Software",
   description:
     "We design and build bespoke software applications modeled specifically around your organization's unique logic, database structures, and daily workflows.",
-  canonical: "https://krissdevhub.com/services/custom-software",
+  canonical: "https://krissdevhub.dev/services/custom-software",
 });
 
 const problem = {

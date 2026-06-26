@@ -11,7 +11,7 @@ export const metadata = constructMetadata({
   title: "Case Studies",
   description:
     "Explore how KrissDevHub Technologies builds AI-native products, SaaS platforms, and custom software for startups and growing businesses.",
-  canonical: "https://krissdevhub.com/case-studies",
+  canonical: "https://krissdevhub.dev/case-studies",
 });
 
 export default async function CaseStudiesPage() {

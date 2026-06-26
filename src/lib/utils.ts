@@ -27,7 +27,7 @@ export function truncate(str: string, length: number): string {
 }
 
 export function absoluteUrl(path: string): string {
-  return `${process.env.NEXT_PUBLIC_SITE_URL || "https://krissdevhub.com"}${path}`;
+  return `${process.env.NEXT_PUBLIC_SITE_URL || "https://krissdevhub.dev"}${path}`;
 }
 
 export function wait(ms: number): Promise<void> {

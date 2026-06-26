@@ -5,7 +5,7 @@ export const metadata = constructMetadata({
   title: "SaaS Development",
   description:
     "We design and build multi-tenant SaaS products with robust database architectures, secure auth, complex billing setups, and lightning-fast frontends.",
-  canonical: "https://krissdevhub.com/services/saas-development",
+  canonical: "https://krissdevhub.dev/services/saas-development",
 });
 
 const problem = {

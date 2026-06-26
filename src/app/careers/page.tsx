@@ -26,7 +26,7 @@ export const metadata = constructMetadata({
   title: "Careers",
   description:
     "Join KrissDevHub Technologies. We're building AI-native software for the next generation and looking for exceptional people to do it with.",
-  canonical: "https://krissdevhub.com/careers",
+  canonical: "https://krissdevhub.dev/careers",
 });
 
 const perks = [
@@ -202,7 +202,7 @@ export default async function CareersPage() {
               <p className="mt-8 text-sm text-white/30">
                 Don&apos;t see your role?{" "}
                 <a
-                  href="mailto:careers@krissdevhub.com"
+                  href="mailto:careers@krissdevhub.dev"
                   className="text-white hover:text-white/80 transition-colors underline underline-offset-4"
                 >
                   Send us your CV anyway

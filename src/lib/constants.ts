@@ -4,9 +4,9 @@ export const siteConfig = {
   description:
     "We build AI-native software, SaaS products, and custom digital solutions that help startups and growing businesses scale faster.",
   tagline: "Building AI-Native Software for the Next Generation.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://krissdevhub.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://krissdevhub.dev",
   ogImage: "/og-image.png",
-  email: "hello@krissdevhub.com",
+  email: "hello@krissdevhub.dev",
   phone: "+1 (555) 000-0000",
   links: {
     twitter: "https://twitter.com/krissdevhub",

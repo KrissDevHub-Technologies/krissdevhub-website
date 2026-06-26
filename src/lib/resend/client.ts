@@ -16,8 +16,8 @@ export async function sendContactNotification({
   service?: string;
 }) {
   return resend.emails.send({
-    from: "KrissDevHub <noreply@krissdevhub.com>",
-    to: ["hello@krissdevhub.com"],
+    from: "KrissDevHub <noreply@krissdevhub.dev>",
+    to: ["hello@krissdevhub.dev"],
     subject: `New Contact Form Submission from ${name}`,
     html: `
       <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; background: #050505; color: #fff; border-radius: 12px;">
@@ -45,14 +45,14 @@ export async function sendContactConfirmation({
   email: string;
 }) {
   return resend.emails.send({
-    from: "KrissDevHub <noreply@krissdevhub.com>",
+    from: "KrissDevHub <noreply@krissdevhub.dev>",
     to: [email],
     subject: "We received your message — KrissDevHub Technologies",
     html: `
       <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; background: #050505; color: #fff; border-radius: 12px;">
         <h2 style="color: #3b82f6;">Thanks, ${name}!</h2>
         <p style="color: #a1a1aa; line-height: 1.6;">We've received your message and will get back to you within 1 business day.</p>
-        <p style="color: #a1a1aa; line-height: 1.6;">In the meantime, feel free to explore our <a href="https://krissdevhub.com/case-studies" style="color: #3b82f6;">case studies</a> or follow us on <a href="https://twitter.com/krissdevhub" style="color: #3b82f6;">Twitter</a>.</p>
+        <p style="color: #a1a1aa; line-height: 1.6;">In the meantime, feel free to explore our <a href="https://krissdevhub.dev/case-studies" style="color: #3b82f6;">case studies</a> or follow us on <a href="https://twitter.com/krissdevhub" style="color: #3b82f6;">Twitter</a>.</p>
         <p style="color: #52525b; margin-top: 32px; font-size: 14px;">— The KrissDevHub Team</p>
       </div>
     `,

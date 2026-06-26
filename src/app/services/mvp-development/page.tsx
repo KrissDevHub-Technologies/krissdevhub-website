@@ -5,7 +5,7 @@ export const metadata = constructMetadata({
   title: "MVP Development",
   description:
     "Launch your product vision in 4-8 weeks with a high-craft, production-ready Minimum Viable Product built to validate demand and attract investment.",
-  canonical: "https://krissdevhub.com/services/mvp-development",
+  canonical: "https://krissdevhub.dev/services/mvp-development",
 });
 
 const problem = {

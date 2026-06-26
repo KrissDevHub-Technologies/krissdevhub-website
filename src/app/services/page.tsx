@@ -9,7 +9,7 @@ export const metadata = constructMetadata({
   title: "Services",
   description:
     "AI application development, SaaS engineering, workflow automation, custom software, API development, and MVP launch services.",
-  canonical: "https://krissdevhub.com/services",
+  canonical: "https://krissdevhub.dev/services",
 });
 
 const services = [

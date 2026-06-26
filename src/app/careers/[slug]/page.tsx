@@ -28,7 +28,7 @@ export async function generateMetadata({
   return constructMetadata({
     title: job.title,
     description: job.description?.slice(0, 160) || "",
-    canonical: `https://krissdevhub.com/careers/${slug}`,
+    canonical: `https://krissdevhub.dev/careers/${slug}`,
   });
 }
 
@@ -72,7 +72,7 @@ export default async function CareerDetailPage({
     hiringOrganization: {
       "@type": "Organization",
       name: "KrissDevHub Technologies",
-      sameAs: "https://krissdevhub.com",
+      sameAs: "https://krissdevhub.dev",
     },
     ...(job.salary_min && {
       baseSalary: {

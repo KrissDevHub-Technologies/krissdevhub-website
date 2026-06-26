@@ -2,7 +2,7 @@ import { constructMetadata } from "@/lib/metadata";
 
 export const metadata = constructMetadata({
   title: "Privacy Policy",
-  canonical: "https://krissdevhub.com/privacy",
+  canonical: "https://krissdevhub.dev/privacy",
 });
 
 export default function PrivacyPage() {
@@ -30,12 +30,12 @@ export default function PrivacyPage() {
     {
       title: "Your rights",
       content:
-        "You have the right to access, correct, or delete your personal data at any time. To exercise any of these rights, email us at hello@krissdevhub.com and we will respond within 30 days.",
+        "You have the right to access, correct, or delete your personal data at any time. To exercise any of these rights, email us at hello@krissdevhub.dev and we will respond within 30 days.",
     },
     {
       title: "Contact",
       content:
-        "If you have questions about this privacy policy, please contact us at hello@krissdevhub.com. This policy was last updated in June 2025.",
+        "If you have questions about this privacy policy, please contact us at hello@krissdevhub.dev. This policy was last updated in June 2025.",
     },
   ];
 

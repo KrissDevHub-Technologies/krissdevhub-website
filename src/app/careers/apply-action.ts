@@ -60,7 +60,7 @@ export async function applyForJob(prevState: FormState, formData: FormData): Pro
     console.error("Application action error:", err);
     return {
       success: false,
-      error: "Something went wrong while submitting. Please email hello@krissdevhub.com directly.",
+      error: "Something went wrong while submitting. Please email hello@krissdevhub.dev directly.",
     };
   }
 }

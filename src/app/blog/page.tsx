@@ -7,7 +7,7 @@ export const metadata = constructMetadata({
   title: "Blog",
   description:
     "Insights on AI development, SaaS engineering, and building software that scales — from the KrissDevHub Technologies team.",
-  canonical: "https://krissdevhub.com/blog",
+  canonical: "https://krissdevhub.dev/blog",
 });
 
 export default async function BlogPage() {

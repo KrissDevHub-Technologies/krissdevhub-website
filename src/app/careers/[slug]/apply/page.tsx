@@ -18,7 +18,7 @@ export async function generateMetadata({
   return constructMetadata({
     title: `Apply — ${job.title}`,
     description: `Apply for the ${job.title} position at KrissDevHub Technologies.`,
-    canonical: `https://krissdevhub.com/careers/${slug}/apply`,
+    canonical: `https://krissdevhub.dev/careers/${slug}/apply`,
   });
 }
 

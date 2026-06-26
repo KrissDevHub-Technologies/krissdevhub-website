@@ -2,7 +2,7 @@ import { constructMetadata } from "@/lib/metadata";
 
 export const metadata = constructMetadata({
   title: "Terms of Service",
-  canonical: "https://krissdevhub.com/terms",
+  canonical: "https://krissdevhub.dev/terms",
 });
 
 export default function TermsPage() {
