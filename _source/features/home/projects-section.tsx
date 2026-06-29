@@ -6,34 +6,34 @@ import { TextReveal } from "@/components/shared/text-reveal";
 // Static featured projects (will be Supabase-fetched in real implementation)
 const featuredProjects = [
   {
-    title: "NeuralOps Dashboard",
+    title: "KrissDevHub Technologies Website",
+    category: "Custom Web App",
+    description:
+      "An enterprise-grade, highly performant showcase website for KrissDevHub Technologies built with Next.js 16 App Router, TypeScript, and Supabase.",
+    tech: ["Next.js 16", "TypeScript", "React 19", "Supabase"],
+    metric: "100/100 Lighthouse Score",
+    color: "from-cyan-600/15 to-blue-600/10",
+    slug: "krissdevhub-technologies-website",
+  },
+  {
+    title: "Signal Hire – AI-Powered Interview Platform",
     category: "AI Platform",
     description:
-      "A real-time AI operations platform for monitoring LLM pipelines, tracking token usage, and managing vector database performance at scale.",
-    tech: ["Next.js", "OpenAI", "Pinecone", "Supabase"],
-    metric: "40% reduction in API costs",
-    color: "from-blue-600/20 to-purple-600/10",
-    slug: "neuralops-dashboard",
+      "An AI-powered virtual screening and interview platform that transcribes live voice consultations and generates structured evaluation cards.",
+    tech: ["Python", "FastAPI", "Whisper API", "Claude 3.5 Sonnet"],
+    metric: "95% evaluation accuracy",
+    color: "from-emerald-600/15 to-teal-600/10",
+    slug: "signal-hire-ai-interview-platform",
   },
   {
-    title: "FleetFlow SaaS",
-    category: "Logistics Technology",
+    title: "Branovation – Marketing SaaS Admin Platform",
+    category: "Marketing SaaS",
     description:
-      "End-to-end fleet management SaaS with real-time GPS tracking, predictive maintenance alerts, and automated driver compliance workflows.",
-    tech: ["React", "Node.js", "PostgreSQL", "AWS"],
-    metric: "3× faster route optimization",
-    color: "from-emerald-600/15 to-blue-600/10",
-    slug: "fleetflow-saas",
-  },
-  {
-    title: "MedScript AI",
-    category: "HealthTech",
-    description:
-      "AI-powered clinical documentation assistant that reduces physician note-taking time by 60%, using fine-tuned medical LLMs and HIPAA-compliant storage.",
-    tech: ["Python", "LangChain", "FastAPI", "Azure"],
-    metric: "60% faster documentation",
-    color: "from-rose-600/15 to-purple-600/10",
-    slug: "medscript-ai",
+      "A multi-tenant SaaS dashboard managing high-volume social campaigns, cohort allocations, influencer tracking, and payouts.",
+    tech: ["Next.js", "PostgreSQL", "Stripe Connect", "Redis"],
+    metric: "Zero payment sync errors",
+    color: "from-amber-600/15 to-orange-600/10",
+    slug: "branovation-marketing-saas-admin",
   },
 ];
 

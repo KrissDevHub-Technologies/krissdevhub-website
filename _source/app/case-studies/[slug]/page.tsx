@@ -17,69 +17,54 @@ const projects: Record<string, {
   timeline: string;
   gradient: string;
 }> = {
-  "neuralops-dashboard": {
-    title: "NeuralOps Dashboard",
+  "krissdevhub-technologies-website": {
+    title: "KrissDevHub Technologies Website",
+    category: "Custom Web App",
+    gradient: "from-cyan-600/30 to-blue-600/20",
+    description: "An enterprise-grade, highly performant showcase website for KrissDevHub Technologies built with Next.js 16 App Router, TypeScript, and Supabase.",
+    longDescription: "This case study documents the design and development of our own company digital hub. The website is built to demonstrate premium Silicon Valley aesthetics (glassmorphism, interactive SVG charts, clean micro-animations) while ensuring perfect responsive readability and automated SEO structure.",
+    challenge: "The primary challenge was building a website that reflects our design system standards and technical depth without relying on bloated dependencies, heavy templates, or generic animations. The site needed to serve pages instantly with sub-250ms load times, maintain 100% Core Web Vitals, and offer dynamically generated sitemaps.",
+    solution: "We built the site using the latest Next.js 16 version with React Server Components, TypeScript, and Tailwind CSS. The interface uses Tailwind's utility class system for responsive grid layouts, custom SVG canvas animations for interactive diagrams, and a Server Action-based application queue linking straight to Supabase PostgreSQL.",
+    results: "The website achieves a 100/100 performance score on Google Lighthouse. Type checking is fully verified at build time, and contact requests/job applications are safely processed via encrypted database schemas.",
+    tech: ["Next.js 16", "TypeScript", "React 19", "Supabase", "Tailwind CSS", "Framer Motion", "Lucide Icons"],
+    metrics: [
+      { label: "Lighthouse Performance", value: "100/100" },
+      { label: "Page Load Time", value: "< 250ms" },
+      { label: "Core Web Vitals Pass", value: "100%" },
+    ],
+    timeline: "6 weeks",
+  },
+  "signal-hire-ai-interview-platform": {
+    title: "Signal Hire – AI-Powered Interview Platform",
     category: "AI Platform",
-    gradient: "from-blue-600/30 to-purple-600/20",
-    description: "Real-time AI operations platform for monitoring LLM pipelines at scale.",
-    longDescription:
-      "NeuralOps is a monitoring and observability platform built for companies running LLM workloads in production. It provides real-time visibility into API costs, latency distributions, model performance, and vector database health — all from a single dashboard.",
-    challenge:
-      "The client was running 50M+ LLM API calls per month across 12 models with no unified observability layer. They were flying blind on costs and had no way to detect prompt regression before it reached users.",
-    solution:
-      "We designed a streaming pipeline that captures every LLM call, evaluates output quality in near-real-time using a judge model, and surfaces anomalies on a unified React dashboard. All data is stored in Supabase with Pinecone for semantic similarity search across past responses.",
-    results:
-      "Within 30 days of launch, the team identified 3 regressions before they reached production. Monthly AI costs dropped by 40% through intelligent caching of semantically similar queries. The dashboard processes 2M events per day with sub-200ms query latency.",
-    tech: ["Next.js 15", "TypeScript", "OpenAI", "Pinecone", "Supabase", "Framer Motion", "Recharts", "Vercel"],
+    gradient: "from-emerald-600/30 to-teal-600/20",
+    description: "An AI-powered virtual screening and interview platform that transcribes live voice consultations and generates structured evaluation cards.",
+    longDescription: "Signal Hire is an advanced AI recruiting assistant designed to streamline candidate screening. The application conducts automated technical conversations, parses verbal answers in real time, and leverages medical/technical language classifiers to evaluate coding and operations questions.",
+    challenge: "Legacy technical screening relies on static online multiple-choice tests that are easily bypassed by external tools or chat interfaces. The client needed a platform that could evaluate dynamic conversational responses, handle custom speech-to-text processing for accent variance, and run evaluations without storing sensitive personal audio long-term.",
+    solution: "We built a secure audio streaming backend that processes conversational audio using Whisper models, executing real-time transcript matching. We then implemented a LLM evaluation engine using fine-tuned Claude 3.5 models to structure candidate responses, evaluating logical consistency and code terminology against test parameters.",
+    results: "Candidates are screened in under 15 minutes, with audio processing taking less than 3 seconds per reply. Technical evaluation accuracy matched human interviewer ratings with a 95% correlation during initial pilot runs.",
+    tech: ["Python", "FastAPI", "Whisper API", "Claude 3.5 Sonnet", "React", "Tailwind CSS", "Supabase", "WebRTC"],
     metrics: [
-      { label: "Monthly cost reduction", value: "40%" },
-      { label: "Query latency (p95)", value: "< 200ms" },
-      { label: "Events processed/day", value: "2M+" },
-      { label: "Time to ship MVP", value: "8 weeks" },
+      { label: "Evaluation Correlation", value: "95%" },
+      { label: "Response Delay", value: "< 3.0s" },
+      { label: "Avg Screening Time", value: "< 15 min" },
     ],
-    timeline: "8 weeks",
+    timeline: "10 weeks",
   },
-  "fleetflow-saas": {
-    title: "FleetFlow SaaS",
-    category: "Logistics Technology",
-    gradient: "from-emerald-600/25 to-blue-600/15",
-    description: "Fleet management SaaS with real-time GPS, maintenance alerts, and compliance automation.",
-    longDescription:
-      "FleetFlow is a full-stack fleet management platform serving logistics operators across the UK, Germany, and Poland. It unifies GPS tracking, maintenance scheduling, driver compliance, and financial reporting into a single product.",
-    challenge:
-      "The client was managing 250+ vehicles across 3 countries using spreadsheets, WhatsApp groups, and 4 disconnected tools. Compliance documentation was manual, late payment rates were high, and they had no visibility into fleet health.",
-    solution:
-      "We built a multi-tenant SaaS with real-time WebSocket GPS feeds, predictive maintenance ML models (trained on historical service records), automated tachograph compliance generation, and an operator mobile app for drivers.",
-    results:
-      "Route optimization is now 3× faster using our AI-powered routing engine. Late payments dropped 45% after implementing automated invoice reminders. The compliance team went from 20 hours per week of manual document processing to under 2.",
-    tech: ["React", "Node.js", "PostgreSQL", "AWS", "Redis", "Mapbox", "Stripe", "Twilio"],
+  "branovation-marketing-saas-admin": {
+    title: "Branovation – Marketing SaaS Admin Platform",
+    category: "Marketing SaaS",
+    gradient: "from-amber-600/30 to-orange-600/20",
+    description: "A multi-tenant SaaS dashboard managing high-volume social campaigns, cohort allocations, influencer tracking, and payouts.",
+    longDescription: "Branovation is an enterprise-grade administration hub for marketing departments and agencies. It enables campaign managers to design cohort strategies, monitor real-time referral links, and distribute automated payouts via Stripe Connect.",
+    challenge: "The team was managing hundreds of active influencers across multiple regions using Excel spreadsheets and manual wires. Payout calculations were prone to errors, campaign attribution was laggy, and scaling user accounts created performance bottlenecks on their database queries.",
+    solution: "We engineered a robust multi-tenant dashboard utilizing Postgres Row Level Security (RLS) to keep company data partitioned. We integrated Stripe Connect for automated split payouts and designed an analytics pipeline that tracks active referrers using a high-throughput event aggregator.",
+    results: "Campaign managers can distribute accurate payments to 500+ users with one click. Dashboard load times dropped under 300ms, and administrative payment tracking errors were reduced to absolute zero.",
+    tech: ["Next.js", "PostgreSQL", "Stripe Connect", "Redis", "Framer Motion", "Tailwind CSS", "Zustand"],
     metrics: [
-      { label: "Route optimization", value: "3× faster" },
-      { label: "Late payments", value: "−45%" },
-      { label: "Compliance hours saved/week", value: "18h" },
-      { label: "Active fleets", value: "250+" },
-    ],
-    timeline: "14 weeks",
-  },
-  "medscript-ai": {
-    title: "MedScript AI",
-    category: "HealthTech",
-    gradient: "from-rose-600/20 to-purple-600/15",
-    description: "AI clinical documentation assistant reducing physician note time by 60%.",
-    longDescription:
-      "MedScript AI transcribes patient-physician conversations in real time, extracts structured clinical data, and generates SOAP-format clinical notes pre-populated into the EHR system — all within the consultation window.",
-    challenge:
-      "Physicians at a mid-sized UK healthcare provider were spending 35% of their time on documentation rather than patient care. Burnout was high, appointment capacity was constrained, and note quality was inconsistent.",
-    solution:
-      "We built a HIPAA/GDPR-compliant audio pipeline using Azure Cognitive Services for transcription, fine-tuned a medical LLM for entity extraction, and integrated with the provider's Epic EHR via FHIR APIs. All data is processed and deleted within the session window.",
-    results:
-      "Average documentation time dropped from 12 minutes to under 5 minutes per patient. Physician satisfaction scores improved significantly, and the provider increased appointment capacity by 22% without hiring additional staff.",
-    tech: ["Python", "LangChain", "Azure Cognitive Services", "FastAPI", "React", "FHIR", "PostgreSQL"],
-    metrics: [
-      { label: "Documentation time", value: "−60%" },
-      { label: "Note accuracy", value: "97.3%" },
-      { label: "Appointment capacity", value: "+22%" },
-      { label: "Physicians onboarded", value: "80+" },
+      { label: "Dashboard load", value: "< 300ms" },
+      { label: "Influencer Payouts", value: "500+/click" },
+      { label: "Payment Errors", value: "0%" },
     ],
     timeline: "12 weeks",
   },

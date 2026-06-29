@@ -7,58 +7,6 @@
 -- 1. SEED PROJECTS
 INSERT INTO projects (title, slug, description, excerpt, cover_image, tech_stack, metrics, category, featured, published, published_at) VALUES
   (
-    'NeuralOps Dashboard', 
-    'neuralops-dashboard', 
-    'A real-time AI operations platform for monitoring LLM pipelines, tracking token usage, and managing vector database performance at scale.', 
-    'NeuralOps is a monitoring and observability platform built for companies running LLM workloads in production. It provides real-time visibility into API costs, latency distributions, model performance, and vector database health — all from a single dashboard.',
-    NULL,
-    ARRAY['Next.js 15', 'TypeScript', 'OpenAI', 'Pinecone', 'Supabase', 'Framer Motion', 'Recharts', 'Vercel'],
-    '{"challenge": "The client was running 50M+ LLM API calls per month across 12 models with no unified observability layer. They were flying blind on costs and had no way to detect prompt regression before it reached users.", "solution": "We designed a streaming pipeline that captures every LLM call, evaluates output quality in near-real-time using a judge model, and surfaces anomalies on a unified React dashboard. All data is stored in Supabase with Pinecone for semantic similarity search across past responses.", "results": "Within 30 days of launch, the team identified 3 regressions before they reached production. Monthly AI costs dropped by 40% through intelligent caching of semantically similar queries. The dashboard processes 2M events per day with sub-200ms query latency.", "values": [{"label": "Monthly cost reduction", "value": "40%"}, {"label": "Query latency (p95)", "value": "< 200ms"}, {"label": "Events processed/day", "value": "2M+"}, {"label": "Time to ship MVP", "value": "8 weeks"}], "time_to_ship": "8 weeks"}',
-    'AI Platform',
-    true,
-    true,
-    NOW()
-  ),
-  (
-    'FleetFlow SaaS', 
-    'fleetflow-saas', 
-    'End-to-end fleet management SaaS with real-time GPS tracking, predictive maintenance alerts, and automated driver compliance workflows.', 
-    'FleetFlow is a full-stack fleet management platform serving logistics operators across the UK, Germany, and Poland. It unifies GPS tracking, maintenance scheduling, driver compliance, and financial reporting into a single product.',
-    NULL,
-    ARRAY['React', 'Node.js', 'PostgreSQL', 'AWS', 'Redis', 'Mapbox', 'Stripe', 'Twilio'],
-    '{"challenge": "The client was managing 250+ vehicles across 3 countries using spreadsheets, WhatsApp groups, and 4 disconnected tools. Compliance documentation was manual, late payment rates were high, and they had no visibility into fleet health.", "solution": "We built a multi-tenant SaaS with real-time WebSocket GPS feeds, predictive maintenance ML models (trained on historical service records), automated tachograph compliance generation, and an operator mobile app for drivers.", "results": "Route optimization is now 3× faster using our AI-powered routing engine. Late payments dropped 45% after implementing automated invoice reminders. The compliance team went from 20 hours per week of manual document processing to under 2.", "values": [{"label": "Route optimization", "value": "3× faster"}, {"label": "Late payments", "value": "−45%"}, {"label": "Compliance hours saved/week", "value": "18h"}, {"label": "Active fleets", "value": "250+"}], "time_to_ship": "12 weeks"}',
-    'Logistics Tech',
-    true,
-    true,
-    NOW()
-  ),
-  (
-    'MedScript AI', 
-    'medscript-ai', 
-    'AI-powered clinical documentation assistant that reduces physician note-taking time by 60%, using fine-tuned medical LLMs and HIPAA-compliant storage.', 
-    'MedScript AI is a clinical documentation assistant that automatically listens to doctor-patient consultations and compiles HIPAA-compliant, structured medical notes. It integrates directly with major EHR platforms to streamline workflows.',
-    NULL,
-    ARRAY['Python', 'LangChain', 'Claude 3.5 Sonnet', 'FastAPI', 'Azure', 'FHIR', 'Next.js'],
-    '{"challenge": "Physicians spent up to 3 hours daily on administrative paperwork, leading to burnout. Previous speech-to-text tools struggled with specialized medical jargon, pharmacology, and natural conversational cadence.", "solution": "We engineered a secure Whisper-based transcription pipeline with clinical entity recognition. The backend uses fine-tuned Claude models to structure the transcript into SOAP notes, with end-to-end encryption of all patient data.", "results": "Administrative paperwork time dropped by 60% across pilot clinics. Note accuracy hit 97.3%, significantly beating standard transcription services. 80+ active physicians onboarded in under 4 weeks.", "values": [{"label": "Documentation time", "value": "−60%"}, {"label": "Accuracy rate", "value": "97.3%"}, {"label": "Physicians onboarded", "value": "80+"}, {"label": "Audit compliance", "value": "100%"}], "time_to_ship": "10 weeks"}',
-    'HealthTech',
-    true,
-    true,
-    NOW()
-  ),
-  (
-    'PropVault', 
-    'propvault', 
-    'A property management platform unifying lease management, maintenance requests, tenant communication, and financial reporting into one seamless product.', 
-    'PropVault streamlines real estate operations for property management companies. By centralizing communication, maintenance, and payments, it eliminates overhead and provides tenants with a premium modern dashboard.',
-    NULL,
-    ARRAY['Next.js', 'Ruby on Rails', 'PostgreSQL', 'Stripe', 'Twilio', 'AWS S3'],
-    '{"challenge": "Property managers were handling maintenance orders, lease documents, and monthly rent payments across 3 separate portals and hundreds of physical papers, causing delays and errors.", "solution": "We engineered a unified property management platform integrating Stripe Connect for split rent payments, automated lease document signing via HelloSign API, and an SMS-based maintenance dispatch queue.", "results": "Maintenance dispatch turnaround times dropped by 50%. Over 98% of rent collections are now automated, reducing delays from days to hours. The client scaled portfolio by 2.5x with zero additional hires.", "values": [{"label": "Dispatch turnaround", "value": "−50%"}, {"label": "Automated collections", "value": "98%+"}, {"label": "Portfolio scaling", "value": "2.5×"}], "time_to_ship": "14 weeks"}',
-    'PropTech',
-    false,
-    true,
-    NOW()
-  ),
-  (
     'KrissDevHub Technologies Website',
     'krissdevhub-technologies-website',
     'An enterprise-grade, highly performant showcase website for KrissDevHub Technologies built with Next.js 16 App Router, TypeScript, and Supabase.',

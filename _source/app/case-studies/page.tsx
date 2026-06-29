@@ -15,88 +15,46 @@ export const metadata = constructMetadata({
 
 const caseStudies = [
   {
-    title: "NeuralOps Dashboard",
+    title: "KrissDevHub Technologies Website",
+    category: "Custom Web App",
+    description:
+      "An enterprise-grade, highly performant showcase website for KrissDevHub Technologies built with Next.js 16 App Router, TypeScript, and Supabase.",
+    tech: ["Next.js 16", "TypeScript", "React 19", "Supabase"],
+    metrics: [
+      { label: "Lighthouse Performance", value: "100/100" },
+      { label: "Page Load Time", value: "< 250ms" },
+      { label: "Core Web Vitals Pass", value: "100%" },
+    ],
+    slug: "krissdevhub-technologies-website",
+    gradient: "from-cyan-600/15 to-blue-600/10",
+  },
+  {
+    title: "Signal Hire – AI-Powered Interview Platform",
     category: "AI Platform",
     description:
-      "A real-time AI operations platform for monitoring LLM pipelines, tracking token usage, and managing vector database performance at scale. Built for a Series A SaaS company handling 50M+ API calls per month.",
-    tech: ["Next.js", "OpenAI", "Pinecone", "Supabase", "TypeScript"],
+      "An AI-powered virtual screening and interview platform that transcribes live voice consultations and generates structured evaluation cards.",
+    tech: ["Python", "FastAPI", "Whisper API", "Claude 3.5 Sonnet"],
     metrics: [
-      { label: "API cost reduction", value: "40%" },
-      { label: "Response latency", value: "< 200ms" },
-      { label: "Time to ship", value: "8 weeks" },
+      { label: "Evaluation Correlation", value: "95%" },
+      { label: "Response Delay", value: "< 3.0s" },
+      { label: "Avg Screening Time", value: "< 15 min" },
     ],
-    slug: "neuralops-dashboard",
-    gradient: "from-blue-600/30 to-purple-600/20",
+    slug: "signal-hire-ai-interview-platform",
+    gradient: "from-emerald-600/15 to-teal-600/10",
   },
   {
-    title: "FleetFlow SaaS",
-    category: "Logistics Technology",
+    title: "Branovation – Marketing SaaS Admin Platform",
+    category: "Marketing SaaS",
     description:
-      "End-to-end fleet management SaaS with real-time GPS tracking, predictive maintenance alerts, and automated compliance workflows for logistics operators across 3 countries.",
-    tech: ["React", "Node.js", "PostgreSQL", "AWS", "Redis"],
+      "A multi-tenant SaaS dashboard managing high-volume social campaigns, cohort allocations, influencer tracking, and payouts.",
+    tech: ["Next.js", "PostgreSQL", "Stripe Connect", "Redis"],
     metrics: [
-      { label: "Route optimization", value: "3× faster" },
-      { label: "Compliance cost", value: "−60%" },
-      { label: "Active fleets", value: "250+" },
+      { label: "Dashboard load", value: "< 300ms" },
+      { label: "Influencer Payouts", value: "500+/click" },
+      { label: "Payment Errors", value: "0%" },
     ],
-    slug: "fleetflow-saas",
-    gradient: "from-emerald-600/25 to-blue-600/15",
-  },
-  {
-    title: "MedScript AI",
-    category: "HealthTech",
-    description:
-      "AI-powered clinical documentation assistant that reduces physician note-taking time by 60%. Built with fine-tuned medical LLMs, HIPAA-compliant storage, and EHR integrations.",
-    tech: ["Python", "LangChain", "FastAPI", "Azure", "FHIR"],
-    metrics: [
-      { label: "Documentation time", value: "−60%" },
-      { label: "Accuracy rate", value: "97.3%" },
-      { label: "Physicians onboarded", value: "80+" },
-    ],
-    slug: "medscript-ai",
-    gradient: "from-rose-600/20 to-purple-600/15",
-  },
-  {
-    title: "PropVault",
-    category: "PropTech",
-    description:
-      "A property management platform unifying lease management, maintenance requests, tenant communication, and financial reporting into one seamless product.",
-    tech: ["Next.js", "Supabase", "Stripe", "Twilio", "Vercel"],
-    metrics: [
-      { label: "Admin time saved", value: "12h/week" },
-      { label: "Late payments", value: "−45%" },
-      { label: "Properties managed", value: "1,200+" },
-    ],
-    slug: "propvault",
-    gradient: "from-amber-600/20 to-orange-600/15",
-  },
-  {
-    title: "LegalEase AI",
-    category: "LegalTech",
-    description:
-      "Contract analysis and clause extraction platform using GPT-4 to identify risk clauses, suggest standard language, and generate first-draft NDAs and MSAs in seconds.",
-    tech: ["Python", "OpenAI", "FastAPI", "React", "PostgreSQL"],
-    metrics: [
-      { label: "Review time", value: "−75%" },
-      { label: "Contracts processed", value: "10k+" },
-      { label: "Legal team cost", value: "−30%" },
-    ],
-    slug: "legalease-ai",
-    gradient: "from-indigo-600/25 to-blue-600/15",
-  },
-  {
-    title: "EduPath Platform",
-    category: "EdTech",
-    description:
-      "Adaptive learning SaaS that personalizes curriculum paths using learner performance data and LLM-powered content generation. Deployed across 6 partner institutions.",
-    tech: ["Next.js", "Python", "OpenAI", "Supabase", "TypeScript"],
-    metrics: [
-      { label: "Completion rate", value: "+38%" },
-      { label: "Learning outcomes", value: "+22%" },
-      { label: "Active learners", value: "5,000+" },
-    ],
-    slug: "edupath-platform",
-    gradient: "from-teal-600/25 to-emerald-600/15",
+    slug: "branovation-marketing-saas-admin",
+    gradient: "from-amber-600/15 to-orange-600/10",
   },
 ];
 

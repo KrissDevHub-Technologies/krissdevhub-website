@@ -28,28 +28,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
   if (!project) notFound();
 
   // Pick dynamic colors for visual flair matching V1
-  const colorMap = slug.includes("neural")
-    ? {
-        gradient: "from-blue-600/20 via-purple-600/10 to-transparent",
-        accent: "text-blue-400",
-        border: "hover:border-blue-500/20",
-        glow: "bg-blue-500/5",
-      }
-    : slug.includes("fleet")
-    ? {
-        gradient: "from-emerald-600/15 via-blue-600/10 to-transparent",
-        accent: "text-emerald-400",
-        border: "hover:border-emerald-500/20",
-        glow: "bg-emerald-500/5",
-      }
-    : slug.includes("med")
-    ? {
-        gradient: "from-rose-600/15 via-purple-600/10 to-transparent",
-        accent: "text-rose-400",
-        border: "hover:border-rose-500/20",
-        glow: "bg-rose-500/5",
-      }
-    : slug.includes("krissdevhub-technologies-website")
+  const colorMap = slug.includes("krissdevhub-technologies-website")
     ? {
         gradient: "from-cyan-600/15 via-blue-600/10 to-transparent",
         accent: "text-cyan-400",
