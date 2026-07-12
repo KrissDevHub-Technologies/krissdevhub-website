@@ -3,6 +3,7 @@ import { LogosSection } from "@/features/home/logos-section";
 import { CapabilitiesSection } from "@/features/home/capabilities-section";
 import { WorkforceSection } from "@/features/home/workforce-section";
 import { WhyUsSection } from "@/features/home/why-us-section";
+import { PartnerSection } from "@/features/home/partner-section";
 import { ProcessSection } from "@/features/home/process-section";
 import { ProjectsSection } from "@/features/home/projects-section";
 import { IndustriesSection } from "@/features/home/industries-section";
@@ -21,6 +22,7 @@ export default function HomePage() {
       <CapabilitiesSection />
       <WorkforceSection />
       <WhyUsSection />
+      <PartnerSection />
       <ProcessSection />
       <ProjectsSection />
       <IndustriesSection />
