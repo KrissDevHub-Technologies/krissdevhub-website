@@ -34,6 +34,7 @@ export const navLinks = [
   { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
   { label: "Careers", href: "/careers" },
+  { label: "Partners", href: "/partners" },
 ];
 
 export const footerLinks = {
@@ -52,6 +53,7 @@ export const footerLinks = {
     { label: "Case Studies", href: "/case-studies" },
     { label: "Blog", href: "/blog" },
     { label: "Careers", href: "/careers" },
+    { label: "Partners", href: "/partners" },
     { label: "Contact", href: "/contact" },
   ],
   legal: [

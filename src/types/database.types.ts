@@ -124,6 +124,63 @@ export interface Database {
           created_at?: string;
         };
       };
+      partners: {
+        Row: {
+          id: string;
+          company_name: string;
+          company_email: string;
+          website: string | null;
+          company_size: string | null;
+          country: string;
+          linkedin_company: string | null;
+          contact_name: string;
+          designation: string | null;
+          contact_email: string;
+          phone: string;
+          linkedin_profile: string | null;
+          partner_type: string;
+          services: string[];
+          years_in_business: string | null;
+          team_size: string | null;
+          portfolio: string | null;
+          enterprise_clients: string | null;
+          partnership_reason: string | null;
+          additional_notes: string | null;
+          status: "New" | "Under Review" | "Contacted" | "Meeting Scheduled" | "Approved" | "Rejected" | "Closed";
+          admin_notes: string | null;
+          history: Json | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          company_name: string;
+          company_email: string;
+          website?: string | null;
+          company_size?: string | null;
+          country: string;
+          linkedin_company?: string | null;
+          contact_name: string;
+          designation?: string | null;
+          contact_email: string;
+          phone: string;
+          linkedin_profile?: string | null;
+          partner_type: string;
+          services?: string[];
+          years_in_business?: string | null;
+          team_size?: string | null;
+          portfolio?: string | null;
+          enterprise_clients?: string | null;
+          partnership_reason?: string | null;
+          additional_notes?: string | null;
+          status?: "New" | "Under Review" | "Contacted" | "Meeting Scheduled" | "Approved" | "Rejected" | "Closed";
+          admin_notes?: string | null;
+          history?: Json | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: Partial<Database["public"]["Tables"]["partners"]["Insert"]>;
+      };
       newsletter: {
         Row: {
           id: string;

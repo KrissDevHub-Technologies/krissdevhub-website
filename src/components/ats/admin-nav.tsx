@@ -9,6 +9,7 @@ import {
   Users,
   Star,
   MessageSquare,
+  Handshake,
   ChevronLeft,
   ChevronRight,
   LogOut,
@@ -29,9 +30,15 @@ interface NavItem {
 const ATS_NAV: NavItem[] = [
   // CRM
   {
-    label: "Leads CRM",
+    label: "Leads",
     href: "/admin",
     icon: MessageSquare,
+    section: "CRM",
+  },
+  {
+    label: "Partners",
+    href: "/admin/partners",
+    icon: Handshake,
     section: "CRM",
   },
   // ATS
